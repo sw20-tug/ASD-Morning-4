@@ -2,4 +2,4 @@
 
 This is the repository for the team *ASD: Morning 4*. :)
 
-Testing
+Testing 2 added gitignore
