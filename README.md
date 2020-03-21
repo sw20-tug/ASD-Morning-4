@@ -7,7 +7,7 @@ vocabulary in a foreign language.
 
 ### Building
 
--Coming soon-
+---Coming soon---
 
 ### Meeting Notes 
 
