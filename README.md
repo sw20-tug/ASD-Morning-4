@@ -5,9 +5,22 @@
 Vocabulary trainer is a dictionary and training application which allows its users to study and test 
 vocabulary in a foreign language.
 
-### Building
+### Setup
 
----Coming soon---
+### Requirements
+
+* Java installed 
+* JDK 8 or higher
+* JetBrains IntelliJ Ultimate IDE
+
+### Building and Running
+
+* Clone/Download this repository 
+* Start IntelliJ and click 'Open'
+* Navigate in your cloned repo folder, choose the `pom.xml` file and click 'ok'
+* After prompted 'pom.xml is a project file' click 'Open as Project'
+* To start the application hit the green 'play button', the spring boot application will start (see Run)
+* Navigate in your Browser to the home url: `http://localhost:8080/api/example/hello-world` (this will be changed...)
 
 ### Meeting Notes 
 
