@@ -1,4 +1,4 @@
-package br.com.asd4m.javaspringidea;
+package com.vocabularytrainer.project;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -14,7 +14,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class JavaSpringIdeaApplicationTests {
+public class MainApplicationTests {
 
 	@LocalServerPort
 	private int port;

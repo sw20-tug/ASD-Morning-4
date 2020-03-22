@@ -9,8 +9,9 @@ vocabulary in a foreign language.
 
 ### Requirements
 
-* Java installed 
+* Java SDK 1.8 or higher
 * JDK 8 or higher
+* MySQL 5.6 or higher
 * JetBrains IntelliJ Ultimate IDE
 
 ### Building and Running
