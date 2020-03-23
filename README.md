@@ -23,4 +23,4 @@ ___18.03.2020___
     * Read Java Spring Boot docs and setup a Spring Boot Test Project
     * Read MySQL docs and setup everything
     * Install Teamviewer for collaborative programming
-    * Split into groups and create branch for each Issue
+    * Split into groups and create branch for each Issue.
