@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Logged in</title>
+</head>
+<body>
+<div id="content" th:remove="tag">
+    <h1>This is a secured page!</h1>
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+    <p><a href="/logout">Logout</a></p>
+</div>
+</body>
+</html>
