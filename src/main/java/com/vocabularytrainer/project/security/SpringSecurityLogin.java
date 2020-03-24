@@ -1,9 +1,6 @@
-package com.vocabularytrainer.project.config;
+package com.vocabularytrainer.project.security;
 
-import com.vocabularytrainer.project.web.LoggingAccessDeniedHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,10 +13,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private LoggingAccessDeniedHandler accessDeniedHandler;
+public class SpringSecurityLogin extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -32,10 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/img/**",
                         "/webjars/**").permitAll()
 
-                // here I can write the matchers, if a user has this role then go to this ...
+                // redirect here after successful login with Role USER
                 .antMatchers("/user/**").hasRole("USER")
-
-
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -50,8 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling()
-
-                .accessDeniedHandler(accessDeniedHandler);
+                .accessDeniedPage("/request-denied");
     }
 
     // fix according: https://mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Vocabulary</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+    </style>
+
+</head>
+<body>
+
+<div th:remove="tag">
+
+    <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
+        <div class="alert alert-info">
+            Your vocabularies have been updated.
+        </div>
+    </div>
+
+    <form method="post" th:action="@{addvoc}" th:object="${addvoc}">
+
+        <h5>Add new Vocabulary</h5>
+
+        <div class="form-group">
+            <label for="german">
+                German Word: <input type="text" class="form-control" placeholder="" id="german" th:field="*{german_word}"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="english">
+                English Translation: <input type="text" class="form-control" placeholder="" id="english" th:field="*{engl_trans}"/>
+            </label>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>
