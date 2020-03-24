@@ -1,5 +1,9 @@
 package com.vocabularytrainer.project.entity;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -72,7 +76,15 @@ public class IssueReport {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+
+        //this.email = email; // uses that from thymeleaf variable
+
+        //set the current user to it -> make "automatically"
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        this.email = userDetails.getUsername();
     }
 
     public void setUrl(String url) {

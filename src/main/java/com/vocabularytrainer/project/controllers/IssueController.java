@@ -1,6 +1,9 @@
 package com.vocabularytrainer.project.controllers;
 
 import com.vocabularytrainer.project.db.IssueRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*; // Restcontroller, Requestmapping, RequestParameter, GetMapping ...
 
@@ -9,6 +12,11 @@ import com.vocabularytrainer.project.entity.IssueReport;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * ExampleController
@@ -68,9 +76,24 @@ public class IssueController {
 
     @GetMapping("/issues")
     public String getIssues(Model model) {
-        model.addAttribute("issues", this.issueRepository.findAllButPrivate());
+
+        //model.addAttribute("issues", this.issueRepository.findAllButPrivate());
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        //System.out.println("User name: " + userDetails.getUsername());
+
+        // pass as an argument, show table entries only with this email
+        model.addAttribute("issues", this.issueRepository.findAllByEmail( ( userDetails.getUsername() ) ));
+
         return "issues/issuereport_list";
     }
+
+    // test@mail.com
+    // pass the user name as for the
+
 
     /* Example Login Page Handler */
     @GetMapping("/")

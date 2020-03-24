@@ -31,7 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
+
+                // here I can write the matchers, if a user has this role then go to this ...
                 .antMatchers("/user/**").hasRole("USER")
+
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -46,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling()
+
                 .accessDeniedHandler(accessDeniedHandler);
     }
 
