@@ -10,13 +10,12 @@ import javax.persistence.*;
 
 @Entity // tells Hibernate ("database manager for java") this is a database table
 @Table(name = "tabAllUserVocabularies")
-public class VocabularyAddEntries {
+public class VocabularyEntries {
 
     /* Model of Table */
     @Id // these are some options for id to be auto-increment
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String user;
     private String german_word;
     private String engl_trans;
@@ -24,7 +23,7 @@ public class VocabularyAddEntries {
     private String tag; // for Issue LANG_005 ("custom tags for filtering")
 
     // Standard Constructor e.g. called in getUserAddVocabulary()
-    public VocabularyAddEntries() {
+    public VocabularyEntries() {
 
     }
 

@@ -21,8 +21,13 @@
 <body>
 <div th:remove="tag">
 
-    <h1 style="display: inline">Welcome </h1><h1 style="display: inline" th:text="${current_user}"></h1> <br>
+    <!-- Align Heading Welcome Message -->
+    <h1 style="display: inline">Welcome </h1>
+    <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
+
     <br>
+    <br>
+
     <h2>Overview of your Vocabularies</h2>
     <br>
     <div class="container">
