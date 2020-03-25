@@ -9,13 +9,6 @@ vocabulary in a foreign language.
 
 [Please see here for setup instructions](docs/Documentation.md#setup-instructions)
 
-### Requirements
-
-* Java SDK 1.8 or higher
-* JDK 8 or higher
-* MySQL 5.6 or higher
-* JetBrains IntelliJ Ultimate IDE
-
 ### Meeting Notes 
 
 ___18.03.2020___
