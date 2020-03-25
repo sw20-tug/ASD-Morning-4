@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body {
+            max-width:500px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin {
+            margin-bottom: 10px;
+        }
+
+        .form-signin {
+            font-weight: 400;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .back-btn {
+            max-width: 250px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:remove="tag">
+
+    <form class="form-signin" th:action="@{/login}" method="post">
+
+        <!-- Error Message -->
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                Invalid username or password.
+            </div>
+        </div>
+
+        <!-- Logout Message -->
+        <div th:if="${param.logout}">
+            <div class="alert alert-info">
+                You have been logged out.
+            </div>
+        </div>
+
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        </p>
+        <input name="_csrf" type="hidden" value="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+    <p class="back-btn"><a href="/" th:href="@{/}">Back to Homepage</a></p>
+
+</div>
+
+
+</body>
+</html>
