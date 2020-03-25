@@ -38,4 +38,19 @@ ___18.03.2020___
     * Read Java Spring Boot docs and setup a Spring Boot Test Project
     * Read MySQL docs and setup everything
     * Install Teamviewer for collaborative programming
-    * Split into groups and create branch for each Issue
+    * Split into groups and create branch for each Issue.
+    
+___25.03.2020___
+
+* Setting Up the Framework for every participant.
+* Setting goals for Sprint 2
+    * Issues 003 - 007 
+* Organizing pair-programming Teams
+    * Teamviewer is used for this point
+* Start implementing next issues
+* Planning to introduce Unit-Tests
+
+* Planing resume: 
+    * Creating branches per Issue
+ 
+ 
