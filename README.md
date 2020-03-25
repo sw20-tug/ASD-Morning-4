@@ -9,8 +9,9 @@ vocabulary in a foreign language.
 
 ### Requirements
 
-* Java installed 
+* Java SDK 1.8 or higher
 * JDK 8 or higher
+* MySQL 5.6 or higher
 * JetBrains IntelliJ Ultimate IDE
 
 ### Building and Running
@@ -19,8 +20,9 @@ vocabulary in a foreign language.
 * Start IntelliJ and click 'Open'
 * Navigate in your cloned repo folder, choose the `pom.xml` file and click 'ok'
 * After prompted 'pom.xml is a project file' click 'Open as Project'
-* To start the application hit the green 'play button', the spring boot application will start (see Run)
-* Navigate in your Browser to the home url: `http://localhost:8080/api/example/hello-world` (this will be changed...)
+* To start the application hit the green 'play button' (JavaSpringIdeaApplication selected), the spring boot application will start (see Run)
+  * Alternatively, you can also right-click on `JavapringIdeaApplication.java` and click 'Run'  
+* Navigate in your Browser to the home url: `http://localhost:8080
 
 ### Meeting Notes 
 
