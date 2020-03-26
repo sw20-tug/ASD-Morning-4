@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyInterfaceGerman</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+    </style>
+
+</head>
+<body>
+<div th:remove="tag">
+
+    <!-- Align Heading Welcome Message -->
+    <h1 style="display: inline">Welcome </h1>
+    <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}" ></h1>
+    <h1 style="display: inline"> to your Studyinterface.</h1>
+
+    <br>
+    <br>
+
+    <h2>Click words to reveal them.</h2>
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <tr>
+                <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
+            </tr>
+
+            <!-- Iterate through all entries using th:each -->
+            <th:block th:each="entry : ${overview}">
+                <script>
+                    $(document).ready(function(){
+
+                        $('[data-toggle="popover"]').popover({
+                            html:true,
+                            content: function() {
+                                return $('#translation').html();
+                            }
+                        });
+
+                    });
+                </script>
+                <tr>
+                        <td>
+
+                            <div class="container">
+                                <div id="translation" style="display: none">
+                                    <span th:text="${entry.engl_trans}"></span>
+                                </div>
+
+
+                                <a href="#" title="English" data-toggle="popover" data-placement="right" > <span th:text="${entry.german_word}"></span>
+                                </a>
+
+
+                            </div>
+                    <!--<td><span th:text="${entry.german_word}"></span></td> -->
+                        </td>
+
+                    </tr>
+            </th:block>
+        </table>
+    </div>
+
+
+    <p><a href="/user">back</a></p>
+
+</div>
+
+</body>
+</html>

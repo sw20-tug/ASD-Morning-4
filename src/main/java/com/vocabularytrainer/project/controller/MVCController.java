@@ -45,6 +45,22 @@ public class MVCController {
         return "user/index";
     }
 
+    /* User StudyInterface: Overview */
+    @GetMapping("/user/studyInterfaceGerman")
+    public String userStudyInterface(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+        model.addAttribute("overview", this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername()));
+
+        return "user/study_interface_german";
+    }
+
     /* Show the Form and Let the user enter stuff */
     @GetMapping("/user/addvoc")
     // Model -> Thymeleaf model to access html "variables"
@@ -59,6 +75,8 @@ public class MVCController {
 
         return "user/addvoc_form";
     }
+
+
 
     /* Submit Data from Form using POST */
     @PostMapping("/user/addvoc")
