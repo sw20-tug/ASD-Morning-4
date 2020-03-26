@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>StudyInterfaceGerman</title>
+    <title>StudyInterfaceEnglish</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -21,7 +21,6 @@
 <body>
 <div th:remove="tag">
 
-
     <br>
     <br>
 
@@ -30,7 +29,7 @@
     <div class="container">
         <table class="table table-striped">
             <tr>
-                <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
+                <td style="background-color: lightsalmon"><b>English Vocabulary</b></td>
             </tr>
 
             <!-- Iterate through all entries using th:each -->
@@ -48,12 +47,12 @@
                     });
                 </script>
                 <tr>
-                    <td>
-                            <a href="#" title="English" data-toggle="popover" data-placement="right" th:data-content= "${entry.engl_trans}" > <span th:text="${entry.german_word}"></span>
+                        <td>
+                            <a href="#" title="German" data-toggle="popover" data-placement="right" th:data-content= "${entry.german_word}" > <span th:text="${entry.engl_trans}"></span>
                             </a>
-                    </td>
+                        </td>
 
-                </tr>
+                    </tr>
             </th:block>
         </table>
     </div>
