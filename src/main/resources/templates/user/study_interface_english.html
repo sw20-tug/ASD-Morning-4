@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>StudyInterfaceEnglish</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -21,39 +21,46 @@
 <body>
 <div th:remove="tag">
 
-    <!-- Align Heading Welcome Message -->
-    <h1 style="display: inline">Welcome </h1>
-    <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
-
     <br>
     <br>
 
-    <h2>Overview of your Vocabularies</h2>
+    <h2>Click words to reveal them.</h2>
     <br>
     <div class="container">
         <table class="table table-striped">
             <tr>
-                <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
-                <td style="background-color: lightsalmon"><b>English Translation</b></td>
+                <td style="background-color: lightsalmon"><b>English Vocabulary</b></td>
             </tr>
 
             <!-- Iterate through all entries using th:each -->
             <th:block th:each="entry : ${overview}">
-            <tr>
-                    <td><span th:text="${entry.german_word}"></span></td>
-                    <td><span th:text="${entry.engl_trans}"></span></td>
-            </tr>
+                <script>
+                    $(document).ready(function(){
+
+                        $('[data-toggle="popover"]').popover({
+                            html:true,
+                            content: function() {
+                                return $('#translation').html();
+                            }
+                        });
+
+                    });
+                </script>
+                <tr>
+                        <td>
+                            <a href="#" title="German" data-toggle="popover" data-placement="right" th:data-content= "${entry.german_word}" > <span th:text="${entry.engl_trans}"></span>
+                            </a>
+                        </td>
+
+                    </tr>
             </th:block>
         </table>
     </div>
 
-    <h3>Add Vocabulary</h3>
-    <a href="/user/addvoc">Add vocabulary</a>
 
-    <p><a href="/user/studyInterface">Study Interface</a></p>
-
-    <p><a href="/logout">Logout</a></p>
+    <p><a href="/user">back</a></p>
 
 </div>
+
 </body>
 </html>

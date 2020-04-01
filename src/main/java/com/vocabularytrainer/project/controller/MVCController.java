@@ -45,6 +45,50 @@ public class MVCController {
         return "user/index";
     }
 
+    /* User StudyInterface in German*/
+    @GetMapping("/user/studyInterfaceGerman")
+    public String userStudyInterfaceGerman(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+        model.addAttribute("overview", this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername()));
+
+        return "user/study_interface_german";
+    }
+
+    @GetMapping("/user/studyInterfaceEnglish")
+    public String userStudyInterfaceEnglish(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+        model.addAttribute("overview", this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername()));
+
+        return "user/study_interface_english";
+    }
+
+
+    @GetMapping("/user/studyInterface")
+    public String userStudyInterface(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        return "user/study_interface";
+    }
+
     /* Show the Form and Let the user enter stuff */
     @GetMapping("/user/addvoc")
     // Model -> Thymeleaf model to access html "variables"
@@ -59,6 +103,8 @@ public class MVCController {
 
         return "user/addvoc_form";
     }
+
+
 
     /* Submit Data from Form using POST */
     @PostMapping("/user/addvoc")
