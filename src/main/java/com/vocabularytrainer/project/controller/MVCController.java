@@ -107,7 +107,7 @@ public class MVCController {
         return "user/edit_vocab";
     }
 
-    
+
     @GetMapping("/edit/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("edit_product");
