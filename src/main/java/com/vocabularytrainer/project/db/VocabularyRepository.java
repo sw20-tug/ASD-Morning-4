@@ -26,6 +26,4 @@ public interface VocabularyRepository extends JpaRepository<VocabularyEntries, I
     VocabularyEntries getEntryBasedOnId(
         @Param("parid") int parid
     );
-
-
 }

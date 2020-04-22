@@ -64,6 +64,7 @@ public class MVCController {
         return "user/study_interface_german";
     }
 
+    /* User StudyInterface in English */
     @GetMapping("/user/studyInterfaceEnglish")
     public String userStudyInterfaceEnglish(Model model) {
 
@@ -80,6 +81,7 @@ public class MVCController {
     }
 
 
+    /* General StudyInterface where user selects language */
     @GetMapping("/user/studyInterface")
     public String userStudyInterface(Model model) {
 
@@ -107,23 +109,15 @@ public class MVCController {
         return "user/edit_vocab";
     }
 
-
-    @GetMapping("/edit/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("edit_product");
+    @GetMapping("user/editvoc/edit/{id}")
+    public String showEditProductPage(@PathVariable(name = "id") int id, Model model) {
 
         VocabularyEntries vocabularyEntries = this.vocabularyRepository.getEntryBasedOnId(id);
+        //System.out.println(vocabularyEntries.getId());
 
+        model.addAttribute("edit_vocab_entry", vocabularyEntries);
 
-        System.out.println(vocabularyEntries.getId());
-
-
-        //        Product product = service.get(id);
-        //mav.addObject("product", product);
-
-
-
-        return mav;
+        return "user/edit_vocab_entry";
     }
 
     /* Show the Form and Let the user enter stuff */

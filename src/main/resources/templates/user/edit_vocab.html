@@ -32,7 +32,7 @@
                 <td><span th:text="${entry.german_word}"></span></td>
                 <td><span th:text="${entry.engl_trans}"></span></td>
                 <td>
-                    <a th:href="@{/edit/{ID}  (ID=${entry.id})} ">Edit</a>
+                    <a th:href="@{/user/editvoc/edit/{ID}  (ID=${entry.id})} ">Edit</a>
                     <!-- <a th:href="/@{'/delete/' + ${product.id}}">Delete</a> -->
                 </td>
             </tr>
