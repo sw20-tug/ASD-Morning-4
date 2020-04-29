@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vocabulary Entry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
+        <div class="alert alert-info">
+            Your vocabularies have been updated.
+        </div>
+    </div>
+
+    <form method="post" th:action="@{/user/edit_tag/edit/{ID}  (ID=${edit_tag.id})}"  th:object="${edit_tag}">
+
+        <span th:text="*{id}"></span>
+
+        <label hidden="true" for="edit_germ_entry">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
+        </label>
+
+        <label hidden="true" for="edit_engl_entry">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
+        </label>
+
+        <label for="tag">
+            Edit Tag: <input type="text" class="form-control" placeholder="" id="tag" th:field="*{tag}"/>
+        </label>
+
+        <input type="submit" class="btn btn-primary" value="Submit"/>
+
+    </form>
+
+    <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
+        <a href="/user">back</a>
+    </div>
+
+    <div class="discard" th:if="${!submitted}">
+        <a href="/user">discard</a>
+    </div>
+
+</div>
+
+</body>
+</html>
