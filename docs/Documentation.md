@@ -4,7 +4,7 @@
 
 ### Requirements
 
-* Java SDK 1.8 or higher
+* Java (obviously)
 * JDK 8 or higher
 * MySQL 5.6 or higher
 * JetBrains IntelliJ Ultimate IDE (optional but recommended)
@@ -17,10 +17,11 @@
         $ java -jar target/project-0.0.1-SNAPSHOT.jar
         ```
         
-    * <b>But</b> make sure that you edited your [MySQL configurations](#adding-mysql-to-our-project) beforehand.
+    * <b>Be sure</b> that you edited your [MySQL configurations](#adding-mysql-to-our-project) beforehand.
 
-### Building and Running
+### Building and Running in IntelliJ
 
+* (If you don't use IntelliJ, see under [Requirements](#requirements) how you can build/run this application)
 * Clone/Download this repository 
 * Start IntelliJ and click 'Open'
 * Navigate in your cloned repo folder, choose the `pom.xml` file and click 'ok'
@@ -32,11 +33,17 @@
 
 #### Adding MySQL to our Project
 
-* Download and Install MySQL [Community](https://dev.mysql.com/downloads/mysql/) and [Workbench](https://www.mysql.com/products/workbench/), setup everything 
+* Download and Install MySQL, setup everything 
 in the workbench (create user `student` and password `student` for simplicity)
  and start the server (default port is 3306).
 
-* Add the following to `src/recources/application.properties`:
+* Login into MySQL: `mysql -u student -p`
+
+* Create the database: `CREATE DATABASE db_vocabularytrainer;`
+
+* Grant access: `GRANT ALL PRIVILEGES ON * . * TO 'student'@'localhost';`
+
+* In the project, add the following to `src/recources/application.properties`:
 
     ```
     spring.jpa.hibernate.ddl-auto=update
@@ -79,7 +86,7 @@ src
  |                  +- VocabularyTrainerApplication.java
  |                  |
  |                  +- db
- |                  |   +- VocabularyAddEntries.java
+ |                  |   +- VocabularyEntries.java
  |                  |   +- VocabularyRepository.java
  |                  |
  |                  +- controller
@@ -110,6 +117,15 @@ src
  +- README.md
  
 ```
+
+## Frameworks, Templates, Technologies etc. used
+
+* Maven
+* Spring Boot
+* Thymeleaf
+* MySQL
+* Hibernate
+* Bootstrap
 
 ## `pom.xml` configuration and dependencis
 
@@ -210,10 +226,27 @@ src
 
 ![img_fix_cannot_build](fix_cannot_build.jpeg "picture")
 
+### MySQL related errors
 
+If you get a timezone error, replace your application.entries with the following:
+
+```
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_vocabularytrainer?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+spring.datasource.username=student
+spring.datasource.password=student
+```
 
 ### Useful Spring Boot, Thymeleaf, Bootstrap Get Started-Links
 
-
-
-
+* [Setup IntelliJ with Spring Boot using Spring Initializr](https://medium.com/danielpadua/java-spring-boot-intellij-idea-b919b0097a0) (small correction: don't import, just open the project)
+* [Basic Tutorial using Spring Boot](https://spring.io/guides/gs/spring-boot/)
+* [Some Interesting IntelliJ IDE Features](https://www.jetbrains.com/help/idea/spring-boot.html)
+* [Using Spring Boot Annotations and explaining how they work](https://www.javatpoint.com/spring-boot-annotations)
+* [Spring Boot MySQL example](https://spring.io/guides/gs/accessing-data-mysql/)
+* [Great step by step tutorial using Spring Boot, Database and Thymeleaf](https://www.vogella.com/tutorials/SpringBoot/article.html) <b style="color: red">(!!! Highly recommend !!!)</b>
+* [Thymeleaf Getting Started Refernces](https://www.javatpoint.com/spring-boot-thymeleaf-view)
+* [Explaination, what a Template (like Thymeleaf) is for](https://hackernoon.com/java-template-engines-ef84cb1025a4)
+* [How to use @Queries in Spring Boot](https://www.baeldung.com/spring-data-jpa-query)
+* [Using Spring Boot Securityto create a Login System](https://memorynotfound.com/spring-boot-spring-security-thymeleaf-form-login-example/)
+* [Bootstrap Tutorial Reference](https://www.w3schools.com/bootstrap4/)
