@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -112,6 +113,8 @@ public class MVCController {
     @GetMapping("user/editvoc/edit/{id}")
     public String showEditProductPage(@PathVariable(name = "id") int id, Model model) {
 
+        model.addAttribute("submitted", false);
+
         VocabularyEntries vocabularyEntries = this.vocabularyRepository.getEntryBasedOnId(id);
         //System.out.println(vocabularyEntries.getId());
 
@@ -119,6 +122,28 @@ public class MVCController {
 
         return "user/edit_vocab_entry";
     }
+
+
+    @PostMapping("user/editvoc/edit/{id}")
+    public String submitEditedVocabularyEntry(@PathVariable(name = "id") int id, VocabularyEntries vocabularyEntries, Model model)
+    {
+        model.addAttribute("submitted", true);
+
+        // get current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        vocabularyEntries.setUser(userDetails.getUsername());
+
+        // save result in our Repository Interface
+        VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
+
+        // Thymeleaf-variable for "post-form" - add it
+        model.addAttribute("edit_vocab_entry", result);
+
+        return "user/edit_vocab_entry";
+    }
+
 
     /* Show the Form and Let the user enter stuff */
     @GetMapping("/user/addvoc")
@@ -134,7 +159,6 @@ public class MVCController {
 
         return "user/addvoc_form";
     }
-
 
 
     /* Submit Data from Form using POST */
