@@ -7,14 +7,39 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
+    <!-- Sorting for Tables -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
     <!-- Bootstrap Script Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
+    </style>
+
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
     </style>
 
 </head>
@@ -27,34 +52,65 @@
 
     <h2>Click words to reveal them.</h2>
     <br>
+    <h4>Filter:</h4>
+    <div class="container" style="width: 5%; height: 120%" >
+        <form>
+            <div class="form-group">
+                <select class="form-control" id="sel1">
+                    <option>All</option>
+                    <option>Verb</option>
+                    <option>Noun</option>
+                    <option>Adjectiv</option>
+                </select>
+            </div>
+        </form>
+    </div>
     <div class="container">
-        <table class="table table-striped">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    </div>
+    <div class="container">
+        <table class="table table-striped" data-toggle="table">
+
+
+            <thead>
             <tr>
-                <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
+                <th data-sortable="true">German Vocabulary</th>
             </tr>
-
+            </thead>
             <!-- Iterate through all entries using th:each -->
+            <tbody id="myTable">
             <th:block th:each="entry : ${overview}">
-                <script>
-                    $(document).ready(function(){
-
-                        $('[data-toggle="popover"]').popover({
-                            html:true,
-                            content: function() {
-                                return $('#translation').html();
-                            }
-                        });
-
-                    });
-                </script>
                 <tr>
                     <td>
-                            <a href="#" title="English" data-toggle="popover" data-placement="right" th:data-content= "${entry.engl_trans}" > <span th:text="${entry.german_word}"></span>
-                            </a>
+                        <button th:data-sortby="${entry.german_word}" th:data-english="${entry.engl_trans}" type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+                            <span th:text="${entry.german_word}"> </span>
+                        </button>
+                        <!-- Modal <a href = "" title="English" data-toggle="popover" data-placement="right" th:data-content= "${entry.engl_trans}" > <span th:text="${entry.german_word}"></span>
+                            </a>-->
+
                     </td>
 
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">English Word</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" id="engl" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
             </th:block>
+            </tbody>
         </table>
     </div>
 
@@ -62,6 +118,54 @@
     <p><a href="/user">back</a></p>
 
 </div>
+
+<script>
+
+
+
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    $(document).ready(function(){
+
+        $("#sel1").on("click", function () {
+            var selected = $('#sel1 option:selected').text().toLowerCase();
+
+            if (selected == "all") {
+                selected = "";
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(selected) > -1)
+                });
+            }
+            else{
+
+
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(selected) > -1)
+                });
+            }
+        });
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var engl = button.data('english') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+
+            modal.find('.modal-body input').val(engl)
+
+        })
+
+    });
+
+
+</script>
 
 </body>
 </html>

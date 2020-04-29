@@ -13,11 +13,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
 
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     <!-- Bootstrap Script Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Some Custom Style -->
     <style>
@@ -70,8 +77,8 @@
             <tr>
                 <th  data-sortable="true">German Vocabulary</th>
                 <th  data-sortable="true">English Translation</th>
-                <th  data-sortable="true">Typ</th>
                 <th  data-sortable="true">Rating</th>
+                <th  data-sortable="true">Tag</th>
             </tr>
             </thead>
             <!-- Iterate through all entries using th:each -->
@@ -79,10 +86,14 @@
             <th:block th:each="entry : ${overview}">
                 <tr >
                     <td ><span th:text="${entry.german_word}"></span></td>
-                    <td ><span th:text="${entry.engl_trans}"></span></td>
-                    <td ><span th:text="${entry.tag}"></span></td>
+                    <td ><span  th:text="${entry.engl_trans}"></span></td>
                     <td ><span th:text="${entry.rating}"></span></td>
+                    <td > <!-- Button trigger modal -->
+                        <a th:data-sortby="${entry.tag}" type="button" class="btn btn-info btn-sm" th:href="@{/user/edit_tag/edit/{ID}  (ID=${entry.id})} " role="button"> <span th:text="${entry.tag}"> </span>
+                        </a>
 
+
+                    </td>
 
                 </tr>
             </th:block>
@@ -101,6 +112,9 @@
 </body>
 
 <script>
+
+
+
     $(document).ready(function(){
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
