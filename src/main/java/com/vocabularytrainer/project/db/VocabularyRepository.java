@@ -22,5 +22,8 @@ public interface VocabularyRepository extends JpaRepository<VocabularyEntries, I
         @Param("paruser") String paruser // Parameter Handling for JPQL-Style queries
     );
 
-
+    @Query(value="SELECT i FROM VocabularyEntries i WHERE i.id = :parid")
+    VocabularyEntries getEntryBasedOnId(
+        @Param("parid") int parid
+    );
 }
