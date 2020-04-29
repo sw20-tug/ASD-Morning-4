@@ -37,5 +37,35 @@ ___25.03.2020___
 
 * Planing resume: 
     * Creating branches per Issue
+    
+___01.04.2020___
+ 
+ ASD Morning  - Meeting #3
+ Date: 01.04.2020
+ Time: 08:00 - 08:50
+ Type of meeting: The Retro(spective)
+ Attendees: Beinhundner, Felgitscher, Hiess, Loitzenbauer,
+            Prüll, Ranftl, Wartinger, Weinhandl
+ Tools used to conduct the meeting: TeamSpeak
+ 
+ * things that go well:
+    * all closed issues are working well
+ 
+ * things to improve:
+    * focus more on branches
+    * focus more on the agile workflow
+    * pay attention to naming conventions 
+    * pay attention to the "coding standard"
+        * code should be easy to read
+        * useful comments
+ 
+ * next deadline 29.1. 11:00
+    * Unit Test         Hiess & Wartinger
+    * LAAG_003          Loitzenbauer & Ranftl
+    * LAAG_004          Prüll & Weinhandl
+    * LAAG_005          Beinhunder & Prüll
+    * LAAG_006          
+    * LAAG_007          Felgitscher & Weinhandl
+ 
  
  

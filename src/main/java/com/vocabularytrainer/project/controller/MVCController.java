@@ -105,7 +105,6 @@ public class MVCController {
     }
 
 
-
     /* Submit Data from Form using POST */
     @PostMapping("/user/addvoc")
     public String submitUserAddVocabulary(VocabularyEntries vocabularyEntries, Model model) {
