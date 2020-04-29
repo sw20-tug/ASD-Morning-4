@@ -104,4 +104,10 @@ build/
 ### VS Code ###
 .vscode/
 
+
+# application.properties - depends on settings of the user etc.
 src/main/resources/application.properties
+
+
+# .DS_Store files
+.DS_Store
