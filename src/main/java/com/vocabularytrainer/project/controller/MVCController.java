@@ -125,7 +125,7 @@ public class MVCController {
 
 
     @PostMapping("user/editvoc/edit/{id}")
-    public String submitEditedVocabularyEntry(@PathVariable(name = "id") int id, VocabularyEntries vocabularyEntries, Model model)
+    public String submitEditedVocabularyEntry(VocabularyEntries vocabularyEntries, Model model)
     {
         model.addAttribute("submitted", true);
 
@@ -144,6 +144,23 @@ public class MVCController {
         return "user/edit_vocab_entry";
     }
 
+    @GetMapping("/user/editvoc/delete/{id}")
+    public String deleteVocabularyEntry(@PathVariable(name = "id") int id, Model model)
+    {
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        VocabularyEntries vocabularyEntries = this.vocabularyRepository.getEntryBasedOnId(id);
+
+        //System.out.println(vocabularyEntries.getId());
+
+        this.vocabularyRepository.delete(vocabularyEntries);
+
+        model.addAttribute("overview", this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername()));
+
+        return "user/edit_vocab";
+    }
 
     /* Show the Form and Let the user enter stuff */
     @GetMapping("/user/addvoc")
