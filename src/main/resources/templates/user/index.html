@@ -87,9 +87,13 @@
                 <tr >
                     <td ><span th:text="${entry.german_word}"></span></td>
                     <td ><span  th:text="${entry.engl_trans}"></span></td>
-                    <td ><span th:text="${entry.rating}"></span></td>
-                    <td > <!-- Button trigger modal -->
-                        <a th:data-sortby="${entry.tag}" type="button" class="btn btn-info btn-sm" th:href="@{/user/edit_tag/edit/{ID}  (ID=${entry.id})} " role="button"> <span th:text="${entry.tag}"> </span>
+                    <td ><a th:data-sortby="${entry.rating}" type="button" class="btn btn-info btn-sm" th:href="@{/user/edit_tag/edit/{ID}  (ID=${entry.id})} " role="button"> <span th:text="${entry.tag}"> </span>
+                    </a>
+
+                        <span th:text="${entry.rating}"></span>
+
+                    </td>
+                    <td > <a th:data-sortby="${entry.tag}" type="button" class="btn btn-info btn-sm" th:href="@{/user/edit_tag/edit/{ID}  (ID=${entry.id})} " role="button"> <span th:text="${entry.tag}"> </span>
                         </a>
 
 

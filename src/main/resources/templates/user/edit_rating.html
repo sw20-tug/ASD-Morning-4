@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vocabulary Entry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
+        <div class="alert alert-info">
+            Your vocabularies have been updated.
+        </div>
+    </div>
+
+    <form method="post" th:action="@{/user/edit_tag/edit/{ID}  (ID=${edit_tag.id})}"  th:object="${edit_tag}">
+
+        <span th:text="*{id}"></span>
+
+        <label hidden="true" for="edit_germ_entry">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
+        </label>
+
+        <label hidden="true" for="edit_engl_entry">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
+        </label>
+
+        <p><button id="btn1" type="button" class="btn btn-primary">1</button></p>
+        <p><button id="btn2" type="button" class="btn btn-primary">2</button></p>
+        <p><button id="btn3" type="button" class="btn btn-primary">3</button></p>
+        <p><button id="btn4" type="button" class="btn btn-primary">4</button></p>
+        <p><button id="btn5" type="button" class="btn btn-primary">5</button></p>
+
+        <label for="rating">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="rating" th:field="*{rating}"/>
+        </label>
+
+        <label for="tag">
+            <input hidden="true" type="text" class="form-control" placeholder="" id="tag" th:field="*{tag}"/>
+        </label>
+
+        <input hidden="true" type="submit" class="btn btn-primary" value="Submit"/>
+
+    </form>
+
+    <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
+        <a href="/user">back</a>
+    </div>
+
+    <div class="discard" th:if="${!submitted}">
+        <a href="/user">discard</a>
+    </div>
+
+</div>
+
+<script>
+
+    $('#btn1, #btn2, #btn3, #btn4, #btn5').click(function(event){
+        if($(event.target).attr('id')=='btn1'){
+            $('#rating').val("1");
+        } else if($(event.target).attr('id')=='btn2'){
+            $('#rating').val("2");
+        } else if($(event.target).attr('id')=='btn3'){
+            $('#rating').val("3");
+        } else if($(event.target).attr('id')=='btn4'){
+            $('#rating').val("4");
+        } else if($(event.target).attr('id')=='btn5'){
+            $('#rating').val("5");
+    }
+    });
+
+</script>
+
+</body>
+</html>
