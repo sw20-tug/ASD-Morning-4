@@ -246,7 +246,38 @@ public class MVCController {
         return "user/edit_tag";
     }
 
+    @GetMapping("user/edit_rating/edit/{id}")
+    public String showEditRatingPage(@PathVariable(name = "id") int id, Model model) {
 
+        model.addAttribute("submitted", false);
+
+        VocabularyEntries vocabularyEntries = this.vocabularyRepository.getEntryBasedOnId(id);
+
+        model.addAttribute("edit_rating", vocabularyEntries);
+
+        return "user/edit_rating";
+    }
+
+
+    @PostMapping("user/edit_rating/edit/{id}")
+    public String submitEditedRatingEntry(@PathVariable(name = "id") int id, VocabularyEntries vocabularyEntries, Model model)
+    {
+        model.addAttribute("submitted", true);
+
+        // get current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        vocabularyEntries.setUser(userDetails.getUsername());
+
+        // save result in our Repository Interface
+        VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
+
+        // Thymeleaf-variable for "post-form" - add it
+        model.addAttribute("edit_rating", result);
+
+        return "user/edit_rating";
+    }
 
 
 }
