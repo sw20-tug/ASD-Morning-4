@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <form method="post" th:action="@{/user/edit_tag/edit/{ID}  (ID=${edit_tag.id})}"  th:object="${edit_tag}">
+    <form method="post" th:action="@{/user/edit_rating/edit/{ID}  (ID=${edit_rating.id})}"  th:object="${edit_rating}">
 
         <span th:text="*{id}"></span>
 
@@ -35,11 +35,11 @@
             <input hidden="true" type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
         </label>
 
-        <p><button id="btn1" type="button" class="btn btn-primary">1</button></p>
-        <p><button id="btn2" type="button" class="btn btn-primary">2</button></p>
-        <p><button id="btn3" type="button" class="btn btn-primary">3</button></p>
-        <p><button id="btn4" type="button" class="btn btn-primary">4</button></p>
-        <p><button id="btn5" type="button" class="btn btn-primary">5</button></p>
+        <p><button type="submit" id="btn1" class="btn btn-primary">1</button></p>
+        <p><button type="submit" id="btn2" class="btn btn-primary">2</button></p>
+        <p><button type="submit" id="btn3" class="btn btn-primary">3</button></p>
+        <p><button type="submit" id="btn4" class="btn btn-primary">4</button></p>
+        <p><button type="submit" id="btn5" class="btn btn-primary">5</button></p>
 
         <label for="rating">
             <input hidden="true" type="text" class="form-control" placeholder="" id="rating" th:field="*{rating}"/>
@@ -49,7 +49,7 @@
             <input hidden="true" type="text" class="form-control" placeholder="" id="tag" th:field="*{tag}"/>
         </label>
 
-        <input hidden="true" type="submit" class="btn btn-primary" value="Submit"/>
+        <!-- <input hidden="true" type="submit" class="btn btn-primary" value="Submit"/> -->
 
     </form>
 
