@@ -53,26 +53,35 @@ public class MVCControllerTest {
 
     @BeforeEach
     public void beforeEach() {
-        // init mocks
+        // Initialisiere Mocks
         MockitoAnnotations.initMocks(this);
 
 
-        // spring security setup
+        // Hier legen wir ein Return-Verhalten für unterschiedliche Methoden fest.
+        // z. B. Wenn "getAuthentiication()" aufgerufen wird, gibt die
+        // Instanz "authentication" der Klasse Athentication zurück.
         when(this.securityContext.getAuthentication()).thenReturn(this.authentication);
         when(this.authentication.getPrincipal()).thenReturn(this.userDetails);
         when(this.userDetails.getUsername()).thenReturn(username);
 
+        // Ordnet dem aktuellen Thread einen Sicherheitskontext zu. Anders formuliert, wir
+        // spezifizieren die "Sicherheitsstrategie" für die virtuelle Maschine (JVM).
         SecurityContextHolder.setContext(this.securityContext);
 
-        // database setup
+        // Alle Datenbankeinträge werden gelöscht, um zu testen, wie das Programm darauf reagiert.
         this.vocabularyRepository.deleteAll();
     }
 
     /**
      * Verify security context calls
      */
+
+    // @AfterEach ist eine Annotation, die angibt, was nach jedem Test getestet werden soll.
     @AfterEach
     public void afterEach() {
+        // "verify" wird genutzt, um zu testen, ob ein bestimmtes Verhalten eintrifft.
+        // Wir können ebenfalls angeben, wie oft dafür die Mehtode aufgerufen werden soll.
+        // Wenn der Aufruf funktioniert, wird er "verifiziert": Alles funktioniert.
         verify(this.securityContext, times(1)).getAuthentication();
         verify(this.authentication, times(1)).getPrincipal();
     }
@@ -81,6 +90,7 @@ public class MVCControllerTest {
     public void testUserIndexEmpty() {
         this.controller.userIndex(this.model);
 
+        // "any()" ist ein Platzhalter, falls der Input keine Rolle spielen sollte.
         verify(this.model, times(2)).addAttribute(any(), any());
         verify(this.model, times(1)).addAttribute("current_user", username);
         verify(this.model, times(1)).addAttribute("overview", new ArrayList());
