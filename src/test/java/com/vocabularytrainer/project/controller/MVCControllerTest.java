@@ -136,10 +136,58 @@ public class MVCControllerTest {
         verify(this.model, times(1)).addAttribute("submitted", true);
         assertEquals(username, ve.getUser());
         verify(this.vocabularyRepository, times(1)).save(ve);
-
         verify(this.model, times(1)).addAttribute("addvoc", ve);
+
+        ve.setGerman_word("");
+        ve.setEngl_trans("");
+
+        verify(this.model, times(1)).addAttribute("submitted", false);
     }
 
+    @Test
+    public void testSubmitEditedTagEntry() {
 
+        VocabularyEntries ve = new VocabularyEntries();
+        ve.setId(0);
+        ve.setTag("");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
 
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", false);
+
+        ve.setId(0);
+        ve.setTag("a ridiculously long tag that should be not allowed.");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", false);
+
+        ve.setId(0);
+        ve.setTag("animals");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+    }
+
+        /*
+        -- model.addAttribute("submitted", true);
+
+        // get current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        vocabularyEntries.setUser(userDetails.getUsername());
+
+        // save result in our Repository Interface
+        VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
+
+        // Thymeleaf-variable for "post-form" - add it
+        model.addAttribute("edit_tag", result);
+
+        return "user/edit_tag";
+         */
 }
