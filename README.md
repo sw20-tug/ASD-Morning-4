@@ -180,5 +180,80 @@ More focus on agile events and practices!
 
 * Added Junit and Mockito Tests.
 
+- - - -
 
+# Review Meeting: Sprint 2
+## ASD Morning 4 - Meeting #5
+
+* Review Meeting : Sprint 2 
+* ASD Morning 4 - Meeting #4
+* Date: 29.04.2020
+* Time: 11:30 - 12:00
+* Type of meeting: Review Meeting
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+
+###Purpose
+* Help wanted?
+* How far are the Issues implemented?
+* Are there critical bugs?
+* Ideas for better interaction.
+
+###Meeting Protocol
+* Only minor issues are present.
+* Most Issues are finished.
+* No bugs, we know of yet. 
+* One minor (size 5) Issue was not completed.
+* This gets bigger priority next Sprint
+* Interaction is not highest priority as of now.
+* Code Documentation needs to be updated!
+* Commitment
+* Closed all Issues that we worked on in Sprint 2
+
+
+
+
+
+
+
+
+
+- - - -
+
+# Planning Meeting: Sprint 3
+## ASD Morning 4 - Meeting #6
+
+* Date: 06.05.2020 
+* Time: 08:00 - 08:45
+* Type of meeting: Planning Game
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+###Purpose
+
+* Forming new Pair Programming Groups
+* Declare Issue size
+* distribute Issues
+* Assign Sprint
+* Planning ahead for future Sessions 
+ 
+###Meeting Protocol
+
+* New Ping-Pong Groups are formed.
+  * Kristiana + Christoph
+  * Alex + Simon
+  * Jan + Andi
+  * Sophie + Carina
+* Issue sizes changed
+* Testing mode got High Priority duo to Issue 8 and 9
+* UnitTesting needs updates!
+
+###Commitment
+
+* Hotfix for ds store!
+
+* Updating some documentation!
+
+* Starting to code Issues.
 
