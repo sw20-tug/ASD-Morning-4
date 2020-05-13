@@ -46,13 +46,13 @@
 <div th:remove="tag">
 
     <!-- Align Heading Welcome Message -->
-    <h1 style="display: inline">Welcome </h1>
+    <h1 style="display: inline" th:text="#{greeting}"> </h1>
     <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
 
     <br>
     <br>
 
-    <h2>Overview of your Vocabularies</h2>
+    <h2 th:text="#{overview}"></h2>
     <h4>Filter:</h4>
     <div class="container" style="width: 5%; height: 120%" >
         <form>

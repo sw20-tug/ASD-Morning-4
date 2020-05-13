@@ -3,6 +3,7 @@ package com.vocabularytrainer.project.controller;
 import com.vocabularytrainer.project.db.VocabularyEntries;
 import com.vocabularytrainer.project.db.VocabularyRepository; // Repository Interface
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -279,5 +280,18 @@ public class MVCController {
         return "user/edit_rating";
     }
 
+    //change language
+    @GetMapping("/?lang=de")
+    public String getGermanPage() {
+        return "?lang=de";
+    }
+    @GetMapping("/?lang=en")
+    public String getEnglishPage() {
+        return "?lang=en";
+    }
+    @GetMapping("/?lang=fr")
+    public String getFrenchPage() {
+        return "?lang=fr";
+    }
 
 }
