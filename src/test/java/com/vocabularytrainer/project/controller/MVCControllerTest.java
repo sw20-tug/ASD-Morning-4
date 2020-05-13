@@ -158,7 +158,6 @@ public class MVCControllerTest {
 
     @Test
     public void testSubmitEditedVocabularyEntry() {
-
         //setup db start
         VocabularyEntries ve = new VocabularyEntries();
         when(this.vocabularyRepository.save(ve)).thenReturn(ve);
