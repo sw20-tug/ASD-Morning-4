@@ -137,15 +137,107 @@ public class MVCControllerTest {
         assertEquals(username, ve.getUser());
         verify(this.vocabularyRepository, times(1)).save(ve);
         verify(this.model, times(1)).addAttribute("addvoc", ve);
-
-        ve.setGerman_word("");
-        ve.setEngl_trans("");
-
-        verify(this.model, times(1)).addAttribute("submitted", false);
     }
 
     @Test
     public void testSubmitEditedTagEntry() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+        //setup db end
+
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+        verify(this.vocabularyRepository, times(1)).save(ve);
+        verify(this.model, times(1)).addAttribute("edit_tag", ve);
+    }
+
+    @Test
+    public void testSubmitEditedVocabularyEntry() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+        //setup db end
+
+
+        this.controller.submitEditedVocabularyEntry(ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+        verify(this.vocabularyRepository, times(1)).save(ve);
+        verify(this.model, times(1)).addAttribute("edit_vocab_entry", ve);
+    }
+
+    @Test
+    public void testUserStudyInterfaceEnglish() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+        // test controller
+        this.controller.userStudyInterfaceEnglish(this.model);
+
+        verify(this.model, times(2)).addAttribute(any(), any());
+        verify(this.model, times(1)).addAttribute("current_user", username);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+
+
+        // verify db
+        verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
+
+    }
+
+    @Test
+    public void testUserStudyInterfaceGerman() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+        // test controller
+        this.controller.userStudyInterfaceGerman(this.model);
+
+        verify(this.model, times(2)).addAttribute(any(), any());
+        verify(this.model, times(1)).addAttribute("current_user", username);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+
+
+        // verify db
+        verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
+
+    }
+
+    @Test
+    public void testDeleteVocabularyEntry() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+
+
+        this.controller.deleteVocabularyEntry(ve.getId(), this.model);
+        ve = this.vocabularyRepository.getEntryBasedOnId(ve.getId());
+
+        verify(this.vocabularyRepository, times(1)).delete(ve);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+    }
+
+    /*
+    @Test
+    public void testBoundarySubmitEditedTagEntry() {
 
         VocabularyEntries ve = new VocabularyEntries();
         ve.setId(0);
@@ -171,7 +263,7 @@ public class MVCControllerTest {
         this.controller.submitEditedTagEntry(0, ve, this.model);
         verify(this.model, times(1)).addAttribute("submitted", true);
         assertEquals(username, ve.getUser());
-    }
+    }*/
 
         /*
         -- model.addAttribute("submitted", true);
