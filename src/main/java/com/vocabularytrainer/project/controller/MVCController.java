@@ -110,6 +110,7 @@ public class MVCController {
         return "user/edit_vocab";
     }
 
+    /* Edit specific vocabulary entry based on ID */
     @GetMapping("user/editvoc/edit/{id}")
     public String showEditProductPage(@PathVariable(name = "id") int id, Model model) {
 
@@ -123,9 +124,9 @@ public class MVCController {
         return "user/edit_vocab_entry";
     }
 
-
+    /* Submit edited vocabulary entry based on ID */
     @PostMapping("user/editvoc/edit/{id}")
-    public String submitEditedVocabularyEntry(VocabularyEntries vocabularyEntries, Model model)
+    public String submitEditedVocabularyEntry(@PathVariable(name = "id") VocabularyEntries vocabularyEntries, Model model)
     {
         model.addAttribute("submitted", true);
 
@@ -258,7 +259,6 @@ public class MVCController {
         return "user/edit_rating";
     }
 
-
     @PostMapping("user/edit_rating/edit/{id}")
     public String submitEditedRatingEntry(@PathVariable(name = "id") int id, VocabularyEntries vocabularyEntries, Model model)
     {
@@ -279,5 +279,17 @@ public class MVCController {
         return "user/edit_rating";
     }
 
+    /* Exporting to CSV */
+    /// TODO: Export to CSV Download Button
+    // Generate csv file -> den Download Button
+    // "your generated CSV files": + Date last generation -> overwrite if new is being created
+    // <a download href="vocab.csv">Download Vocabularies</a>
+    // Chris: Funktion, based on id that have been selected create CSV file
+    /// @GetMapping()
+    //public
 
+
+    /* Importing CSV */
+    /// TODO: GetMapping for import_vocab.html
+    /// TODO: PostMapping for import_vocab.html
 }

@@ -76,4 +76,11 @@ public class VocabularyEntries {
     public void setTag(String tag) {
         this.tag = tag;
     }
+
+    /*
+    public String toCSVWriteFormat()
+    {
+        return String.format("Vocabulary[id=%d, user=%s, german_word=%s, engl_trans=%s, rating=%d, tag=%s ]", id, user, german_word, engl_trans, rating, tag);
+    }
+    */
 }
