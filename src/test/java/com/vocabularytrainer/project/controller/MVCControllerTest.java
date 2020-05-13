@@ -164,7 +164,6 @@ public class MVCControllerTest {
         when(this.vocabularyRepository.save(ve)).thenReturn(ve);
         //setup db end
 
-
         this.controller.submitEditedVocabularyEntry(ve, this.model);
 
         verify(this.model, times(1)).addAttribute("submitted", true);
@@ -189,7 +188,6 @@ public class MVCControllerTest {
         verify(this.model, times(1)).addAttribute("current_user", username);
         verify(this.model, times(1)).addAttribute("overview", veList);
 
-
         // verify db
         verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
 
@@ -211,7 +209,6 @@ public class MVCControllerTest {
         verify(this.model, times(1)).addAttribute("current_user", username);
         verify(this.model, times(1)).addAttribute("overview", veList);
 
-
         // verify db
         verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
 
@@ -226,7 +223,6 @@ public class MVCControllerTest {
         veList.add(ve);
         when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
         //setup db end
-
 
         this.controller.deleteVocabularyEntry(ve.getId(), this.model);
         ve = this.vocabularyRepository.getEntryBasedOnId(ve.getId());
