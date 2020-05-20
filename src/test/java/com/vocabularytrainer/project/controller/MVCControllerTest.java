@@ -168,7 +168,7 @@ public class MVCControllerTest {
         verify(this.model, times(1)).addAttribute("submitted", true);
         assertEquals(username, ve.getUser());
         verify(this.vocabularyRepository, times(1)).save(ve);
-        verify(this.model, times(1)).addAttribute("edit_vocab_entry", ve);
+        verify(this.model, times(1)).addAttribute("editvoc", ve);
     }
 
     @Test
