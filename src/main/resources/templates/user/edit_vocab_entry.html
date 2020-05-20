@@ -22,9 +22,9 @@
         </div>
     </div>
 
-    <form method="post" th:action="@{/user/editvoc/edit/{ID}  (ID=${edit_vocab_entry.id})}"  th:object="${edit_vocab_entry}">
+    <form method="post" th:action="@{/user/editvoc/edit/{ID}  (ID=${editvoc.id})}" th:object="${editvoc}">
 
-       <span th:text="*{id}"></span> 
+        <span th:text="*{id}"></span>
 
         <label for="edit_germ_entry">
             <span th:text="#{edit_ger}" ></span>:
@@ -41,11 +41,11 @@
     </form>
 
     <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <a href="/user/editvoc"><span th:text="#{back}"></span></a>
+        <a href="/user"><span th:text="#{back}"></span></a>
     </div>
 
     <div class="discard" th:if="${!submitted}">
-        <a href="/user/editvoc"><span th:text="#{discard}"></span></a>
+        <a href="/user"><span th:text="#{discard}"></span></a>
     </div>
 
 </div>
