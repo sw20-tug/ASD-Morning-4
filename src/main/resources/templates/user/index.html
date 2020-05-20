@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
+
+
     <title>Dashboard</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Sorting for Tables -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
@@ -16,7 +19,8 @@
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <!-- Bootstrap NAVBAR Dependencies -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap Script Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -24,7 +28,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- Some Custom Style -->
     <style>
@@ -36,6 +40,11 @@
             text-align: center;
         }
 
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -43,18 +52,45 @@
 
 
 
+
+
 <div th:remove="tag">
 
+    <!-- Header of the Web-Page -->
+
+    <!-- Navbar -->
+<div class="container" style="width: 80%; height: 120%">
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+        <ul class="navbar-nav ml-auto mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="/user">Vocabulary List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/studyInterface">Study Interface</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/addvoc">Add Vocabulary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/editvoc">Edit Vocabulary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user/import">Import Vocabulary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
     <!-- Align Heading Welcome Message -->
-    <h1 style="display: inline">Welcome </h1>
-    <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
-
-    <br>
-    <br>
-
-    <h2>Overview of your Vocabularies</h2>
+    <h2> Vocabulary List</h2>
     <h4>Filter:</h4>
-    <div class="container" style="width: 5%; height: 120%" >
+    <div class="container" style="width: 5%; height: 100%" >
         <form>
             <div class="form-group">
                 <select class="form-control" id="sel1">
@@ -101,16 +137,20 @@
         </table>
     </div>
 
-    <h3>Add Vocabulary</h3>
-    <a href="/user/addvoc">Add vocabulary</a>
 
-    <p><a href="/user/editvoc">Edit Vocabulary</a></p>
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <h5>Logged in as: </h5>
+                </li>
+                <li class="nav-item">
+                    <h5 th:text="${current_user}"></h5>
+                </li>
 
-    <p><a href="/user/studyInterface">Study Interface</a></p>
-
-    <p><a href="/user/export_vocabularies">Download Vocabularies</a> | <a href="user/import">Import Vocabulary Database</a></p>
-
-    <p><a href="/logout">Logout</a></p>
+            </ul>
+        </nav>
+    </div>
 
 </div>
 </body>

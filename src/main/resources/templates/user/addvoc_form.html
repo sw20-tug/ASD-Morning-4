@@ -15,12 +15,25 @@
     <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
 <body>
 
 <div th:remove="tag">
+
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
         <div class="alert alert-info">
