@@ -36,6 +36,11 @@
             text-align: center;
         }
 
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -44,6 +49,37 @@
 
 
 <div th:remove="tag">
+
+    <!-- Header of the Web-Page -->
+
+    <!-- Navbar -->
+<div class="container" style="width: 80%; height: 120%">
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+        <ul class="navbar-nav ml-auto mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user/import">Import Vocabulary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
     <!-- Align Heading Welcome Message -->
     <h1 style="display: inline" th:text="#{greeting}"> </h1>
@@ -123,16 +159,20 @@
     </div>
 
     <br><br>
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <h5>Logged in as: </h5>
+                </li>
+                <li class="nav-item">
+                    <h5 th:text="${current_user}"></h5>
+                </li>
 
-    <p><a href="/user/addvoc"><span th:text="#{add}"></span></a></p>
+            </ul>
+        </nav>
+    </div>
 
-    <p><a href="/user/editvoc"><span th:text="#{edit_voc}"></span></a></p>
-
-    <p><a href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a></p>
-
-    <p><a href="/user/export_vocabularies">Download Vocabularies</a> | <a href="user/import">Import Vocabulary Database</a></p>
-
-    <p><a href="/logout"><span th:text="#{logout}"></span> </a></p>
 
 </div>
 </body>

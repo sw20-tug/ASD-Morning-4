@@ -11,7 +11,7 @@ public class VocabularyEntries {
 
     /* Model of Table */
     @Id // these are some options for id to be auto-increment
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private int id;
     private String user;

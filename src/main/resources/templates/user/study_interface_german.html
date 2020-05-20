@@ -26,11 +26,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- Some Custom Style -->
-    <style>
-        body { text-align: center; margin-top: 50px;}
-    </style>
 
+    <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
 
@@ -40,15 +37,45 @@
             text-align: center;
         }
 
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
-
 </head>
 <body>
 <div th:remove="tag">
+    <!-- Navbar -->
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/import">Import Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 
-    <br>
-    <br>
 
     <h2 th:text="#{reveal}"></h2>
     <br>
