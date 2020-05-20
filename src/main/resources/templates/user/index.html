@@ -49,6 +49,27 @@
     <h1 style="display: inline" th:text="#{greeting}"> </h1>
     <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
 
+    <div align="right">
+        <select id="locales">
+            <option value=""></option>
+            <option value="de" th:text="#{lang.de}"></option>
+            <option value="en" th:text="#{lang.eng}"></option>
+            <option value="fr" th:text="#{lang.fr}"></option>
+        </select>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('/user/?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
+
     <br>
     <br>
 
@@ -58,16 +79,16 @@
         <form>
             <div class="form-group">
                 <select class="form-control" id="sel1">
-                    <option>All</option>
-                    <option>Verb</option>
-                    <option>Noun</option>
-                    <option>Adjectiv</option>
+                    <option th:text="#{all}"></option>
+                    <option th:text="#{noun}"></option>
+                    <option th:text="#{verb}"></option>
+                    <option th:text="#{adjective}"></option>
                 </select>
             </div>
         </form>
     </div>
     <div class="container">
-        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <input class="form-control" id="myInput" type="text" th:placeholder="#{search}">
     </div>
 
     <br>
@@ -75,10 +96,10 @@
         <table  class="table table-striped" data-toggle="table">
             <thead>
             <tr>
-                <th  data-sortable="true">German Vocabulary</th>
-                <th  data-sortable="true">English Translation</th>
-                <th  data-sortable="true">Rating</th>
-                <th  data-sortable="true">Tag</th>
+                <th  data-sortable="true" th:text="#{german}"></th>
+                <th  data-sortable="true" th:text="#{english}"></th>
+                <th  data-sortable="true" th:text="#{rate}"></th>
+                <th  data-sortable="true" th:text="#{tag}"></th>
             </tr>
             </thead>
             <!-- Iterate through all entries using th:each -->
@@ -101,14 +122,15 @@
         </table>
     </div>
 
-    <h3>Add Vocabulary</h3>
-    <a href="/user/addvoc">Add vocabulary</a>
+    <br><br>
 
-    <p><a href="/user/editvoc">Edit Vocabulary</a></p>
+    <p><a href="/user/addvoc"><span th:text="#{add}"></span></a></p>
 
-    <p><a href="/user/studyInterface">Study Interface</a></p>
+    <p><a href="/user/editvoc"><span th:text="#{edit_voc}"></span></a></p>
 
-    <p><a href="/logout">Logout</a></p>
+    <p><a href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a></p>
+
+    <p><a href="/logout"><span th:text="#{logout}"></span> </a></p>
 
 </div>
 </body>

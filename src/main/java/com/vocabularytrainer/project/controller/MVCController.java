@@ -282,16 +282,29 @@ public class MVCController {
 
     //change language
     @GetMapping("/?lang=de")
-    public String getGermanPage() {
+    public String getGermanStartPage() {
         return "?lang=de";
     }
     @GetMapping("/?lang=en")
-    public String getEnglishPage() {
+    public String getEnglishStartPage() {
         return "?lang=en";
     }
     @GetMapping("/?lang=fr")
-    public String getFrenchPage() {
+    public String getFrenchStartPage() {
         return "?lang=fr";
+    }
+
+    @GetMapping("/user/?lang=de")
+    public String getGermanPage() {
+        return "user/?lang=de";
+    }
+    @GetMapping("/user/?lang=en")
+    public String getEnglishPage() {
+        return "user/?lang=en";
+    }
+    @GetMapping("/user/?lang=fr")
+    public String getFrenchPage() {
+        return "user/?lang=fr";
     }
 
 }

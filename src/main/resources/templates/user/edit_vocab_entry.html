@@ -18,8 +18,7 @@
 <div class="container">
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <div class="alert alert-info">
-            Your vocabularies have been updated.
+        <div class="alert alert-info" th:text="#{voc_update}">
         </div>
     </div>
 
@@ -28,11 +27,13 @@
        <span th:text="*{id}"></span> 
 
         <label for="edit_germ_entry">
-            Edited German Word: <input type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
+            <span th:text="#{edit_ger}" ></span>:
+            <input type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
         </label>
 
         <label for="edit_engl_entry">
-            Edited English Translation: <input type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
+            <span th:text="#{edit_en}" ></span>:
+            <input type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
         </label>
 
         <input type="submit" class="btn btn-primary" value="Submit"/>
@@ -40,11 +41,11 @@
     </form>
 
     <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <a href="/user/editvoc">back</a>
+        <a href="/user/editvoc"><span th:text="#{back}"></span></a>
     </div>
 
     <div class="discard" th:if="${!submitted}">
-        <a href="/user/editvoc">discard</a>
+        <a href="/user/editvoc"><span th:text="#{discard}"></span></a>
     </div>
 
 </div>
