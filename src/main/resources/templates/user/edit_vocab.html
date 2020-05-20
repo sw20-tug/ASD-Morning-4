@@ -34,13 +34,12 @@
 
 <div class="container">
 
-
     <table class="table table-striped">
         <tr>
             <td style="background-color: lightsalmon"> <b>ID</b></td>
-            <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
-            <td style="background-color: lightsalmon"><b>English Translation</b></td>
-            <td style="background-color: lightsalmon"><b>Actions</b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{german}" ></span></b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{english}"></span></b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{action}"></span></b></td>
         </tr>
 
         <!-- Iterate through all entries using th:each -->
@@ -50,14 +49,14 @@
                 <td><span th:text="${entry.german_word}"></span></td>
                 <td><span th:text="${entry.engl_trans}"></span></td>
                 <td>
-                    <a th:href="@{/user/editvoc/edit/{ID}  (ID=${entry.id})} ">Edit</a>
-                    <a th:href="@{/user/editvoc/delete/{ID}  (ID=${entry.id})} ">Delete</a>
+                    <a th:href="@{/user/editvoc/edit/{ID}  (ID=${entry.id})} "><span th:text="#{edit}"></span></a>
+                    <a th:href="@{/user/editvoc/delete/{ID}  (ID=${entry.id})} "><span th:text="#{delete}"></span></a>
                 </td>
             </tr>
         </th:block>
     </table>
 
-    <a href="/user">back</a>
+    <a href="/user"><span th:text="#{back}"></span></a>
 
 </div>
 

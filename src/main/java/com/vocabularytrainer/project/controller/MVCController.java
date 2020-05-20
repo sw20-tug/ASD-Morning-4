@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -153,8 +154,6 @@ public class MVCController {
         // save result in our Repository Interface
         VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
 
-
-
         // Thymeleaf-variable for "post-form" - add it
         model.addAttribute("editvoc", result);
 
@@ -297,6 +296,33 @@ public class MVCController {
         return "user/edit_rating";
     }
 
+    //change language
+    @GetMapping("/?lang=de")
+    public String getGermanStartPage() {
+        return "?lang=de";
+    }
+    @GetMapping("/?lang=en")
+    public String getEnglishStartPage() {
+        return "?lang=en";
+    }
+    @GetMapping("/?lang=fr")
+    public String getFrenchStartPage() {
+        return "?lang=fr";
+    }
+
+    @GetMapping("/user/?lang=de")
+    public String getGermanPage() {
+        return "user/?lang=de";
+    }
+    @GetMapping("/user/?lang=en")
+    public String getEnglishPage() {
+        return "user/?lang=en";
+    }
+    @GetMapping("/user/?lang=fr")
+    public String getFrenchPage() {
+        return "user/?lang=fr";
+    }
+
     /* Export and Download vocabularies as CSV */
     @GetMapping("user/export_vocabularies")
     public ResponseEntity<?> export()
@@ -337,6 +363,7 @@ public class MVCController {
                         .body(attachedFile);
 
             } catch (Exception ex) {
+
 
                 // Return HTML Page: Message with exception
                 String ret = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"> <title>FAILED CSV</title>" +
