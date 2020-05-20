@@ -1,3 +1,7 @@
+# Build and Documentation
+
+<a href="docs/Documentation.md">Manual</a>
+
 # Protocol for Agile Meetings: Group ASD-Morning-4
 
 - - - -
@@ -211,14 +215,6 @@ More focus on agile events and practices!
 * Commitment
 * Closed all Issues that we worked on in Sprint 2
 
-
-
-
-
-
-
-
-
 - - - -
 
 # Planning Meeting: Sprint 3
@@ -230,7 +226,7 @@ More focus on agile events and practices!
 * Attendees: All
 * Tools used to conduct the meeting: Slack and Teamspeak
 
-###Purpose
+### Purpose
 
 * Forming new Pair Programming Groups
 * Declare Issue size
@@ -238,7 +234,7 @@ More focus on agile events and practices!
 * Assign Sprint
 * Planning ahead for future Sessions 
  
-###Meeting Protocol
+### Meeting Protocol
 
 * New Ping-Pong Groups are formed.
   * Kristiana + Christoph
@@ -249,7 +245,7 @@ More focus on agile events and practices!
 * Testing mode got High Priority duo to Issue 8 and 9
 * UnitTesting needs updates!
 
-###Commitment
+### Commitment
 
 * Hotfix for ds store!
 

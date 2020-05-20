@@ -163,7 +163,7 @@ public class MVCControllerTest {
         when(this.vocabularyRepository.save(ve)).thenReturn(ve);
         //setup db end
 
-        this.controller.submitEditedVocabularyEntry(ve, this.model);
+        this.controller.submitEditedVocabularyEntry(ve.getId(), ve, this.model);
 
         verify(this.model, times(1)).addAttribute("submitted", true);
         assertEquals(username, ve.getUser());

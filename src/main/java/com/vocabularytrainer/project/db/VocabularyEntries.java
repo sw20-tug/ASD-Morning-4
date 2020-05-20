@@ -2,11 +2,8 @@ package com.vocabularytrainer.project.db;
 
 // Entity-Model for Database Table
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity // tells Hibernate ("database manager for java") this is a database table
 @Table(name = "tabAllUserVocabularies")
@@ -14,7 +11,8 @@ public class VocabularyEntries {
 
     /* Model of Table */
     @Id // these are some options for id to be auto-increment
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private int id;
     private String user;
     private String german_word;
@@ -76,11 +74,4 @@ public class VocabularyEntries {
     public void setTag(String tag) {
         this.tag = tag;
     }
-
-    /*
-    public String toCSVWriteFormat()
-    {
-        return String.format("Vocabulary[id=%d, user=%s, german_word=%s, engl_trans=%s, rating=%d, tag=%s ]", id, user, german_word, engl_trans, rating, tag);
-    }
-    */
 }
