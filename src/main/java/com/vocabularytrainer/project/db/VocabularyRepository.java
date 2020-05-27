@@ -26,4 +26,10 @@ public interface VocabularyRepository extends JpaRepository<VocabularyEntries, I
     VocabularyEntries getEntryBasedOnId(
         @Param("parid") int parid
     );
+
+    @Query(value="SELECT j FROM VocabularyEntries j WHERE j.user = :paruser AND j.id IN :ids")
+    List<VocabularyEntries> getSelectedIdsFromUserX(
+        @Param("paruser") String paruser,
+        @Param("ids") List<Integer> ids
+    );
 }

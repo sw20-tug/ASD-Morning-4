@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TestingMode</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Piechart-->
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+
+
+
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+    </style>
+
+</head>
+<body>
+    <div th:remove="tag">
+
+        <h3>Result English:</h3>
+        <!--<div id="container" style="width: 100%; height: 100%; size: 200%; color: darkgray "></div>
+        <script>
+            anychart.onDocumentReady(function() {
+
+                // set the data
+                var data = [
+                    {x: "Correct",value: 8},
+                    {x: "False", value: 2},
+                ];
+
+                // create the chart
+                var chart = anychart.pie();
+
+                // set the chart title
+                //chart.title("Result:");
+
+                // add the data
+                chart.data(data);
+
+                // display the chart in the container
+                chart.container('container');
+                chart.draw();
+            });
+        </script>-->
+
+        <h3>Overview of tested vocabulary:</h3>
+        <div class="container">
+            <table class="table table-striped">
+                <tr>
+                    <th>German Vocabulary</th>
+                    <th>English Translation</th>
+                </tr>
+                <!-- Iterate through all entries using th:each -->
+                <th:block th:each="entry : ${overview}">
+                    <tr>
+                        <td><span th:text="${entry.german_word}"></span></td>
+                        <td><span th:text="${entry.engl_trans}"></span></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+
+        <form action="/user/repetition">
+            <input type="submit" value="Repeat wrong Vocabulary">
+        </form>
+        <a href="/user/test">Testing Mode</a></br>
+        <a href="/user">Back to overview</a>
+
+    </div>
+</body>
+</html>

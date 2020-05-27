@@ -12,10 +12,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 <body>
 
 <div class="container">
+
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
         <div class="alert alert-info">
@@ -23,7 +41,7 @@
         </div>
     </div>
 
-    <form method="post" th:action="@{/user/edit_rating/edit/{ID}  (ID=${edit_rating.id})}"  th:object="${edit_rating}">
+    <form method="post" th:action="@{/user/edit_rating/edit/{ID}  (ID=${edit_rating.id})}" th:object="${edit_rating}">
 
         <span th:text="*{id}"></span>
 

@@ -15,6 +15,18 @@
     <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -22,30 +34,30 @@
 
 <div th:remove="tag">
 
+
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <div class="alert alert-info">
-            Your vocabularies have been updated.
+        <div class="alert alert-info" th:text="#{voc_update}">
         </div>
     </div>
 
     <form method="post" th:action="@{addvoc}" th:object="${addvoc}">
 
-        <h5>Add new Vocabulary</h5>
+        <h5 th:text="#{add}"></h5>
 
         <div class="form-group">
             <label for="german">
-                German Word: <input type="text" class="form-control" placeholder="" id="german" th:field="*{german_word}"/>
+                <span th:text="#{german}"></span>: <input type="text" class="form-control" placeholder="" id="german" th:field="*{german_word}"/>
             </label>
         </div>
 
         <div class="form-group">
             <label for="english">
-                English Translation: <input type="text" class="form-control" placeholder="" id="english" th:field="*{engl_trans}"/>
+                <span th:text="#{english}"></span>: <input type="text" class="form-control" placeholder="" id="english" th:field="*{engl_trans}"/>
             </label>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Submit"/>
-        <p><a href="/user">back</a></p>
+        <button class="btn btn-primary" type="submit" th:text="#{submit}"></button>
+        <p><a href="/user"><span th:text="#{back}"></span></a></p>
     </form>
 </div>
 </body>

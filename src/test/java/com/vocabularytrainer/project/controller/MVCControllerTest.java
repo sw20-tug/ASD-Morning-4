@@ -136,10 +136,145 @@ public class MVCControllerTest {
         verify(this.model, times(1)).addAttribute("submitted", true);
         assertEquals(username, ve.getUser());
         verify(this.vocabularyRepository, times(1)).save(ve);
-
         verify(this.model, times(1)).addAttribute("addvoc", ve);
     }
 
+    @Test
+    public void testSubmitEditedTagEntry() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+        //setup db end
 
 
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+        verify(this.vocabularyRepository, times(1)).save(ve);
+        verify(this.model, times(1)).addAttribute("edit_tag", ve);
+    }
+
+    @Test
+    public void testSubmitEditedVocabularyEntry() {
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+        //setup db end
+
+        this.controller.submitEditedVocabularyEntry(ve.getId(), ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+        verify(this.vocabularyRepository, times(1)).save(ve);
+        verify(this.model, times(1)).addAttribute("editvoc", ve);
+    }
+
+    @Test
+    public void testUserStudyInterfaceEnglish() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+        // test controller
+        this.controller.userStudyInterfaceEnglish(this.model);
+
+        verify(this.model, times(2)).addAttribute(any(), any());
+        verify(this.model, times(1)).addAttribute("current_user", username);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+
+        // verify db
+        verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
+
+    }
+
+    @Test
+    public void testUserStudyInterfaceGerman() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+        // test controller
+        this.controller.userStudyInterfaceGerman(this.model);
+
+        verify(this.model, times(2)).addAttribute(any(), any());
+        verify(this.model, times(1)).addAttribute("current_user", username);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+
+        // verify db
+        verify(this.vocabularyRepository, times(1)).showAllVocabularyFromUserX(username);
+
+    }
+
+    @Test
+    public void testDeleteVocabularyEntry() {
+
+        //setup db start
+        VocabularyEntries ve = new VocabularyEntries();
+        List<VocabularyEntries> veList = new ArrayList<>();
+        veList.add(ve);
+        when(this.vocabularyRepository.showAllVocabularyFromUserX(username)).thenReturn(veList);
+        //setup db end
+
+        this.controller.deleteVocabularyEntry(ve.getId(), this.model);
+        ve = this.vocabularyRepository.getEntryBasedOnId(ve.getId());
+
+        verify(this.vocabularyRepository, times(1)).delete(ve);
+        verify(this.model, times(1)).addAttribute("overview", veList);
+    }
+
+    /*
+    @Test
+    public void testBoundarySubmitEditedTagEntry() {
+
+        VocabularyEntries ve = new VocabularyEntries();
+        ve.setId(0);
+        ve.setTag("");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", false);
+
+        ve.setId(0);
+        ve.setTag("a ridiculously long tag that should be not allowed.");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+
+        verify(this.model, times(1)).addAttribute("submitted", false);
+
+        ve.setId(0);
+        ve.setTag("animals");
+        when(this.vocabularyRepository.save(ve)).thenReturn(ve);
+
+        this.controller.submitEditedTagEntry(0, ve, this.model);
+        verify(this.model, times(1)).addAttribute("submitted", true);
+        assertEquals(username, ve.getUser());
+    }*/
+
+        /*
+        -- model.addAttribute("submitted", true);
+
+        // get current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        vocabularyEntries.setUser(userDetails.getUsername());
+
+        // save result in our Repository Interface
+        VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
+
+        // Thymeleaf-variable for "post-form" - add it
+        model.addAttribute("edit_tag", result);
+
+        return "user/edit_tag";
+         */
 }

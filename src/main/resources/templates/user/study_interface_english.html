@@ -29,10 +29,6 @@
     <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
-    </style>
-
-    <style>
-        body { text-align: center; margin-top: 50px;}
 
         .table th{
             background-color: lightsalmon;
@@ -40,31 +36,63 @@
             text-align: center;
         }
 
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
 <body>
+
 <div th:remove="tag">
+    <!-- Navbar -->
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/import">Import Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
-    <br>
-    <br>
 
-    <h2>Click words to reveal them.</h2>
-    <h4>Filter:</h4>
+    <h2 th:text="#{reveal}"></h2>
+    <h4 th:text="#{filter}">:</h4>
     <div class="container" style="width: 5%; height: 120%" >
         <form>
             <div class="form-group">
                 <select class="form-control" id="sel1">
-                    <option>All</option>
-                    <option>Verb</option>
-                    <option>Noun</option>
-                    <option>Adjectiv</option>
+                    <option th:text="#{all}"></option>
+                    <option th:text="#{noun}"></option>
+                    <option th:text="#{verb}"></option>
+                    <option th:text="#{adjective}"></option>
                 </select>
             </div>
         </form>
     </div>
     <div class="container">
-        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <input class="form-control" id="myInput" type="text" th:placeholder="#{search}">
     </div>
     <br>
     <div class="container">
@@ -74,7 +102,7 @@
             <tr>
 
 
-                <th  data-sortable="true">English Vocabulary</th>
+                <th  data-sortable="true" th:text="#{english}"></th>
             </tr>
             </thead>
             <!-- Iterate through all entries using th:each -->
@@ -117,7 +145,7 @@
     </div>
 
 
-    <p><a href="/user">back</a></p>
+    <p><a href="/user"><span th:text="#{back}"></span> </a></p>
 
 </div>
 

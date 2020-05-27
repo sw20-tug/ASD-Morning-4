@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Import Vocabularies</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:remove="tag">
+    <!-- Navbar -->
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">Vocabulary List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/studyInterface">Study Interface</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/addvoc">Add Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/editvoc">Edit Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/import">Import Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <h2>Import Vocabulaies</h2>
+
+    <div>
+        <div class="alert alert-info">
+            NOTE: This process is irreversible!
+        </div>
+    </div>
+
+    <!-- TODO: Upload Form -->
+
+
+</div>
+
+</body>
+</html>

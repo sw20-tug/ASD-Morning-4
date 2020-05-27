@@ -12,27 +12,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 <body>
 
 <div class="container">
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <div class="alert alert-info">
-            Your vocabularies have been updated.
+        <div class="alert alert-info" th:text="#{voc_update}">
         </div>
     </div>
 
-    <form method="post" th:action="@{/user/editvoc/edit/{ID}  (ID=${edit_vocab_entry.id})}"  th:object="${edit_vocab_entry}">
+    <form method="post" th:action="@{/user/editvoc/edit/{ID}  (ID=${editvoc.id})}" th:object="${editvoc}">
 
-       <span th:text="*{id}"></span> 
+        <span th:text="*{id}"></span>
 
         <label for="edit_germ_entry">
-            Edited German Word: <input type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
+            <span th:text="#{edit_ger}" ></span>:
+            <input type="text" class="form-control" placeholder="" id="edit_germ_entry" th:field="*{german_word}"/>
         </label>
 
         <label for="edit_engl_entry">
-            Edited English Translation: <input type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
+            <span th:text="#{edit_en}" ></span>:
+            <input type="text" class="form-control" placeholder="" id="edit_engl_entry" th:field="*{engl_trans}"/>
         </label>
 
         <input type="submit" class="btn btn-primary" value="Submit"/>
@@ -40,11 +58,11 @@
     </form>
 
     <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <a href="/user/editvoc">back</a>
+        <a href="/user"><span th:text="#{back}"></span></a>
     </div>
 
     <div class="discard" th:if="${!submitted}">
-        <a href="/user/editvoc">discard</a>
+        <a href="/user"><span th:text="#{discard}"></span></a>
     </div>
 
 </div>

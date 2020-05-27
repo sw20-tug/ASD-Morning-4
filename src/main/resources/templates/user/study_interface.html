@@ -15,6 +15,18 @@
     <!-- Some Custom Style -->
     <style>
         body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -22,10 +34,14 @@
 <div th:remove="tag">
 
     <!-- Align Heading Welcome Message -->
-    <h1 style="display: inline">Choose the displayed language!</h1>
+    <h1 style="display: inline" th:text="#{choose_language}"></h1>
     <h2> </h2>
-    <a class="btn btn-primary" href="/user/studyInterfaceGerman" th:href="@{/user/studyInterfaceGerman}">German</a>
-    <a class="btn btn-primary" href="/user/studyInterfaceEnglish" th:href="@{/user/studyInterfaceEnglish}">English</a>
+    <a class="btn btn-primary" href="/user/studyInterfaceGerman" th:href="@{/user/studyInterfaceGerman}">
+        <span th:text="#{german}"></span>
+    </a>
+    <a class="btn btn-primary" href="/user/studyInterfaceEnglish" th:href="@{/user/studyInterfaceEnglish}">
+        <span th:text="#{english}"></span>
+    </a>
 
 </div>
 </body>
