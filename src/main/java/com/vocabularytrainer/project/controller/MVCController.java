@@ -313,7 +313,7 @@ public class MVCController {
     public String getFrenchStartPage() {
         return "?lang=fr";
     }
-
+/*
     @GetMapping("/user/?lang=de")
     public String getGermanPage() {
         return "user/?lang=de";
@@ -326,6 +326,7 @@ public class MVCController {
     public String getFrenchPage() {
         return "user/?lang=fr";
     }
+*/
 
     //Testing Mode
     @GetMapping("/user/test")

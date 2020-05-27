@@ -22,6 +22,7 @@ public class VocabularyTrainerConfigTests {
     // Eine Autowired-Annotationen bewirkt eine automatische Verdrahtung - wie der Name bereits verrät.
     // D. h. Diese Methode wird ausgelöst, wenn eine Instanz von der Klasse erzeugt wird, in der sie
     // enthalten ist.
+
     @Autowired
     private MVCController controller;
 

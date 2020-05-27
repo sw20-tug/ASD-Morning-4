@@ -1,6 +1,5 @@
 package com.vocabularytrainer.project.controller;
 
-
 import com.vocabularytrainer.project.db.VocabularyEntries;
 import com.vocabularytrainer.project.db.VocabularyRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -26,7 +25,6 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class MVCControllerTest {
-
 
     @Autowired
     private MVCController controller;
@@ -54,8 +52,8 @@ public class MVCControllerTest {
     @BeforeEach
     public void beforeEach() {
         // Initialisiere Mocks
-        MockitoAnnotations.initMocks(this);
-
+        MockitoAnnotations.initMocks(this); // SpringBootTest --> this class
+                                                     // Import Package
 
         // Hier legen wir ein Return-Verhalten für unterschiedliche Methoden fest.
         // z. B. Wenn "getAuthentiication()" aufgerufen wird, gibt die

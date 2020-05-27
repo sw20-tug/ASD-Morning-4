@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class Beans implements WebMvcConfigurer{
+public class InterfaceLangConfig implements WebMvcConfigurer{
 
     @Bean
     public LocaleResolver localeResolver() {
