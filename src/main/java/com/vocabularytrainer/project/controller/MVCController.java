@@ -448,7 +448,6 @@ public class MVCController {
         return "user/test/testingmode_repetition";
     }
 
-
     /* Export and Download vocabularies as CSV */
     @GetMapping("user/export_vocabularies")
     public ResponseEntity<?> export()
@@ -522,11 +521,14 @@ public class MVCController {
 
     /* Importing CSV */
     /// TODO: GetMapping for import_vocab.html
-    @GetMapping("user/import")
+    //@GetMapping("user/import")
+    /*
     public String showImportView()
     {
         return "user/import_vocab";
     }
+    */
 
     /// TODO: PostMapping for import_vocab.html - the Read-Process (import CSV to Database)
+
 }
