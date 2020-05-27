@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TestingMode</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+    </style>
+
+</head>
+<body>
+
+<div th:remove="tag">
+
+
+    <h5>Testing mode - German</h5></br>
+
+        <div class="container">
+            <form action="/user/g_result" method="get" th:name="result" th:id="result">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                          English words:
+                        </th>
+                        <th>
+                            Please enter German translation here:
+                        </th>
+                    </tr>
+                    <th:block th:each="entry : ${overview}">
+                        <tr>
+                            <td>
+                                <span th:text="${entry.engl_trans}"></span>
+                            </td>
+
+                            <td>
+                                <input type="text" th:id="${entry.german_word}" th:name="${entry.german_word}" value="x">
+                            </td>
+                        </tr>
+                    </th:block>
+                </table>
+                <input type="submit" value="Submit!">
+            </form>
+        </div>
+</div>
+</body>
+</html>

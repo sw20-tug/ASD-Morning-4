@@ -36,7 +36,33 @@
             text-align: center;
         }
 
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
     </style>
+
+    <div align="right">
+        <select id="locales">
+            <option value=""></option>
+            <option value="de" th:text="#{lang.de}"></option>
+            <option value="en" th:text="#{lang.eng}"></option>
+            <option value="fr" th:text="#{lang.fr}"></option>
+        </select>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('/user/?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -45,29 +71,63 @@
 
 <div th:remove="tag">
 
+    <!-- Header of the Web-Page -->
+
+    <!-- Navbar -->
+<div class="container" style="width: 80%; height: 120%">
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+        <ul class="navbar-nav ml-auto mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/test"><span th:text="#{testingmode}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user/import">Import Vocabulary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
     <!-- Align Heading Welcome Message -->
-    <h1 style="display: inline">Welcome </h1>
+    <h1 style="display: inline" th:text="#{greeting}"> </h1>
     <h1 style="display: inline; color: lightpink; font-weight: bold" th:text="${current_user}"></h1>
 
     <br>
     <br>
 
-    <h2>Overview of your Vocabularies</h2>
+    <h2 th:text="#{overview}"></h2>
     <h4>Filter:</h4>
     <div class="container" style="width: 5%; height: 120%" >
         <form>
             <div class="form-group">
                 <select class="form-control" id="sel1">
-                    <option>All</option>
-                    <option>Verb</option>
-                    <option>Noun</option>
-                    <option>Adjectiv</option>
+                    <option th:text="#{all}"></option>
+                    <option th:text="#{noun}"></option>
+                    <option th:text="#{verb}"></option>
+                    <option th:text="#{adjective}"></option>
                 </select>
             </div>
         </form>
     </div>
     <div class="container">
-        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <input class="form-control" id="myInput" type="text" th:placeholder="#{search}">
     </div>
 
     <br>
@@ -75,10 +135,10 @@
         <table  class="table table-striped" data-toggle="table">
             <thead>
             <tr>
-                <th  data-sortable="true">German Vocabulary</th>
-                <th  data-sortable="true">English Translation</th>
-                <th  data-sortable="true">Rating</th>
-                <th  data-sortable="true">Tag</th>
+                <th  data-sortable="true" th:text="#{german}"></th>
+                <th  data-sortable="true" th:text="#{english}"></th>
+                <th  data-sortable="true" th:text="#{rate}"></th>
+                <th  data-sortable="true" th:text="#{tag}"></th>
             </tr>
             </thead>
             <!-- Iterate through all entries using th:each -->
@@ -101,16 +161,21 @@
         </table>
     </div>
 
-    <h3>Add Vocabulary</h3>
-    <a href="/user/addvoc">Add vocabulary</a>
+    <br><br>
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <h5>Logged in as: </h5>
+                </li>
+                <li class="nav-item">
+                    <h5 th:text="${current_user}"></h5>
+                </li>
 
-    <p><a href="/user/editvoc">Edit Vocabulary</a></p>
+            </ul>
+        </nav>
+    </div>
 
-    <p><a href="/user/studyInterface">Study Interface</a></p>
-
-    <p><a href="/user/export_vocabularies">Download Vocabularies</a> | <a href="user/import">Import Vocabulary Database</a></p>
-
-    <p><a href="/logout">Logout</a></p>
 
 </div>
 </body>

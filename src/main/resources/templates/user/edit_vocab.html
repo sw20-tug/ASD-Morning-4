@@ -12,6 +12,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -20,9 +37,9 @@
     <table class="table table-striped">
         <tr>
             <td style="background-color: lightsalmon"> <b>ID</b></td>
-            <td style="background-color: lightsalmon"><b>German Vocabulary</b></td>
-            <td style="background-color: lightsalmon"><b>English Translation</b></td>
-            <td style="background-color: lightsalmon"><b>Actions</b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{german}" ></span></b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{english}"></span></b></td>
+            <td style="background-color: lightsalmon"><b><span th:text="#{action}"></span></b></td>
         </tr>
 
         <!-- Iterate through all entries using th:each -->
@@ -32,14 +49,14 @@
                 <td><span th:text="${entry.german_word}"></span></td>
                 <td><span th:text="${entry.engl_trans}"></span></td>
                 <td>
-                    <a th:href="@{/user/editvoc/edit/{ID}  (ID=${entry.id})} ">Edit</a>
-                    <a th:href="@{/user/editvoc/delete/{ID}  (ID=${entry.id})} ">Delete</a>
+                    <a th:href="@{/user/editvoc/edit/{ID}  (ID=${entry.id})} "><span th:text="#{edit}"></span></a>
+                    <a th:href="@{/user/editvoc/delete/{ID}  (ID=${entry.id})} "><span th:text="#{delete}"></span></a>
                 </td>
             </tr>
         </th:block>
     </table>
 
-    <a href="/user">back</a>
+    <a href="/user"><span th:text="#{back}"></span></a>
 
 </div>
 

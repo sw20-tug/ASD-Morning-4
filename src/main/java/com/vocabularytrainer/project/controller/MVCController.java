@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -18,18 +19,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -40,6 +43,8 @@ public class MVCController {
     public MVCController(VocabularyRepository vocabularyRepository) {
         this.vocabularyRepository = vocabularyRepository;
     }
+
+    private List<VocabularyEntries> testingdata;
 
     /* Welcome Page */
     @GetMapping("/")
@@ -152,8 +157,6 @@ public class MVCController {
 
         // save result in our Repository Interface
         VocabularyEntries result = this.vocabularyRepository.save(vocabularyEntries);
-
-
 
         // Thymeleaf-variable for "post-form" - add it
         model.addAttribute("editvoc", result);
@@ -297,6 +300,154 @@ public class MVCController {
         return "user/edit_rating";
     }
 
+    //change language
+    @GetMapping("/?lang=de")
+    public String getGermanStartPage() {
+        return "?lang=de";
+    }
+    @GetMapping("/?lang=en")
+    public String getEnglishStartPage() {
+        return "?lang=en";
+    }
+    @GetMapping("/?lang=fr")
+    public String getFrenchStartPage() {
+        return "?lang=fr";
+    }
+
+    @GetMapping("/user/?lang=de")
+    public String getGermanPage() {
+        return "user/?lang=de";
+    }
+    @GetMapping("/user/?lang=en")
+    public String getEnglishPage() {
+        return "user/?lang=en";
+    }
+    @GetMapping("/user/?lang=fr")
+    public String getFrenchPage() {
+        return "user/?lang=fr";
+    }
+
+    //Testing Mode
+    @GetMapping("/user/test")
+    public String userTest(Model model) {
+
+        return "user/test/testingmode";
+
+    }
+
+    @GetMapping("/user/testinggerman")
+    public String userTestingGerman(Model model, @RequestParam("amountg") int amountg) {
+
+        //model.addAttribute("amount", userTest.getElementById("amountg"));
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // give x vocabulary
+        testingdata = this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername());
+        Collections.shuffle(testingdata);
+
+        if(amountg < testingdata.size())
+        {
+            testingdata = testingdata.subList(0, amountg);
+        }
+
+        model.addAttribute("overview", testingdata);
+
+        return "user/test/testingmode_e_to_g";
+    }
+
+        /*@RequestMapping("/user/g_result")
+        public String getURLValue(HttpServletRequest request) {
+            String test = request.getRequestURI();
+            return test;
+        }*/
+
+    @GetMapping("/user/testingenglish")
+    public String userTestingEnglish(Model model, @RequestParam("amounte") int amounte) {
+
+
+        //model.getAttribute("amount", userTest("${amounte}"));
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // give x vocabulary
+        testingdata = this.vocabularyRepository.showAllVocabularyFromUserX(userDetails.getUsername());
+        Collections.shuffle(testingdata);
+
+        if(amounte < testingdata.size()) {
+            testingdata = testingdata.subList(0, amounte);
+        }
+
+        model.addAttribute("overview", testingdata);
+        return "user/test/testingmode_g_to_e";
+    }
+
+        @RequestMapping(value = "/user/g_result/{result}", method = RequestMethod.GET)
+        @ResponseBody
+        public String getFoosBySimplePathWithPathVariable(
+          @PathVariable("result") char result) {
+            System.out.println(result);
+            return "Get a specific Foo with id=" + result;
+          }
+
+    @GetMapping("/user/g_result")
+    public String userTestResultGerman(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        //model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+
+        //System.out.println(input);
+
+        //testingdata = testingdata.subList();
+
+        model.addAttribute("overview", testingdata);
+
+        return "user/test/testingmode_result_german";
+    }
+
+    @GetMapping("/user/e_result")
+    public String userTestResultEnglish(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+
+        model.addAttribute("overview", testingdata);
+
+        return "user/test/testingmode_result_english";
+    }
+
+    @GetMapping("/user/repetition")
+    public String userTestRepetition(Model model) {
+
+        // tell the thymeleaf which user is logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        model.addAttribute("current_user", userDetails.getUsername());
+
+        // get the Query to show current vocabulary entries of user x
+
+        model.addAttribute("overview", testingdata);
+        return "user/test/testingmode_repetition";
+    }
+
+
     /* Export and Download vocabularies as CSV */
     @GetMapping("user/export_vocabularies")
     public ResponseEntity<?> export()
@@ -337,6 +488,7 @@ public class MVCController {
                         .body(attachedFile);
 
             } catch (Exception ex) {
+
 
                 // Return HTML Page: Message with exception
                 String ret = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"> <title>FAILED CSV</title>" +
