@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Import Vocabularies</title>
@@ -38,36 +38,36 @@
         <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
             <ul class="navbar-nav ml-auto mx-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="/user">Vocabulary List</a>
+                    <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/studyInterface">Study Interface</a>
+                    <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/addvoc">Add Vocabulary</a>
+                    <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/editvoc">Edit Vocabulary</a>
+                    <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                    <a class="nav-link" href="/user/export_vocabularies"><span th:text="#{downloadvocab}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user/import">Import Vocabulary</a>
+                    <a class="nav-link" href="user/import"><span th:text="#{importvocab}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
                 </li>
             </ul>
         </nav>
     </div>
 
-    <br>
-    <h2>Import Vocabularies</h2>
+    <h2 th:text="#{importvocab}"></h2>
 
     <div>
         <div class="alert alert-info">
-            NOTE: This process is irreversible!
+            <span th:text="#{irreversible}"></span>
+
         </div>
     </div>
 

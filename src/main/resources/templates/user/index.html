@@ -93,12 +93,12 @@
                 <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                <a class="nav-link" href="/user/export_vocabularies"><span th:text="#{downloadvocab}"></span></a>
             </li>
 
             <!--
             <li class="nav-item">
-                <a class="nav-link" href="user/import">Import Vocabulary</a>
+                <a class="nav-link" href="user/import"><span th:text="#{importvocab}"></span></a>
             </li>
             -->
 
@@ -117,7 +117,7 @@
     <br>
 
     <h2 th:text="#{overview}"></h2>
-    <h4>Filter:</h4>
+    <h4 th:text="#{filter}">:</h4>
     <div class="container" style="width: 5%; height: 120%" >
         <form>
             <div class="form-group">
@@ -170,7 +170,7 @@
         <nav class="navbar navbar-expand-sm navbar-light " style="background-color: lightsalmon;">
             <ul class="navbar-nav ml-auto mx-auto text-center">
                 <li class="nav-item">
-                    <h5>Logged in as: </h5>
+                    <h5 th:text="#{logid}">:</h5>
                 </li>
                 <li class="nav-item">
                     <h5 th:text="${current_user}"></h5>

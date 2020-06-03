@@ -37,7 +37,7 @@
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
         <div class="alert alert-info">
-            Your vocabularies have been updated.
+            <span th:text="#{voc_update}"></span>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
         </label>
 
         <label for="tag">
-            Edit Tag: <input type="text" class="form-control" placeholder="" id="tag" th:field="*{tag}"/>
+            <span th:text="#{edit}"></span><span th:text="#{tag}"></span>: <input type="text" class="form-control" placeholder="" id="tag" th:field="*{tag}"/>
         </label>
 
         <input type="submit" class="btn btn-primary" value="Submit"/>
@@ -66,14 +66,14 @@
     </form>
 
     <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <a href="/user">back</a>
+        <a href="/user"><span th:text="#{back}"></span></a>
     </div>
 
     <div class="discard" th:if="${!submitted}">
-        <a href="/user">discard</a>
+        <a href="/user"><span th:text="#{discard}"></span></a>
     </div>
 
 </div>
-<p>NOTE: Don't extend words more then 10 characters - otherwise an error will be returned</p>
+<p><span th:text="#{charlimit}"></span></p>
 </body>
 </html>
