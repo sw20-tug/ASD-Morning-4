@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Import Vocabularies</title>
@@ -11,6 +11,25 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Sorting for Tables -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Some Custom Style -->
     <style>
@@ -29,6 +48,26 @@
         }
     </style>
 
+    <div align="right">
+        <select id="locales">
+            <option value=""></option>
+            <option value="de" th:text="#{lang.de}"></option>
+            <option value="en" th:text="#{lang.eng}"></option>
+            <option value="fr" th:text="#{lang.fr}"></option>
+        </select>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('/user/?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -38,35 +77,35 @@
         <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
             <ul class="navbar-nav ml-auto mx-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="/user">Vocabulary List</a>
+                    <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/studyInterface">Study Interface</a>
+                    <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/addvoc">Add Vocabulary</a>
+                    <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/editvoc">Edit Vocabulary</a>
+                    <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/export_vocabularies">Download Vocabularies</a>
+                    <a class="nav-link" href="/user/export_vocabularies"><span th:text="#{downloadvocab}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user/import">Import Vocabulary</a>
+                    <a class="nav-link" href="user/import"><span th:text="#{importvocab}"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
                 </li>
             </ul>
         </nav>
     </div>
 
-    <h2>Import Vocabulaies</h2>
+    <h2 th:text="#{importvocab}"></h2>
 
     <div>
         <div class="alert alert-info">
-            NOTE: This process is irreversible!
+            <span th:text="#{irreversible}"></span>
         </div>
     </div>
 

@@ -37,7 +37,7 @@
 
     <div class="result_message" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
         <div class="alert alert-info">
-            Your vocabularies have been updated.
+            <span th:text="#{voc_update}"></span>
         </div>
     </div>
 
@@ -72,11 +72,11 @@
     </form>
 
     <div class="back" th:if="${submitted}"> <!-- from Controller: model.addAttribute("submitted", true); -->
-        <a href="/user">back</a>
+        <a href="/user"><span th:text="#{back}"></span></a>
     </div>
 
     <div class="discard" th:if="${!submitted}">
-        <a href="/user">discard</a>
+        <a href="/user"><span th:text="#{discard}"></span></a>
     </div>
 
 </div>
