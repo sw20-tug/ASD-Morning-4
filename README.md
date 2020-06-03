@@ -253,3 +253,182 @@ More focus on agile events and practices!
 
 * Starting to code Issues.
 
+# Daily Standup : Sprint 3
+## ASD Morning 4 - Meeting #7
+
+* Date: 13.05.2020
+* Time: 08:00 - 08:45
+* Type of meeting: Daily Standup
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpos
+
+* Forming some Pair Programming Groups
+* Sync Team about Issues
+* Help needed?
+
+### Meeting Protocol
+
+* New Ping-Pong Groups are formed.
+    * Kristiana + Carina
+    * Sophie + Christoph
+* UnitTesting, How, When, What!
+* Who did What, where am I?:
+    * Andreas + Jan Implementing Unittests
+    * Alex + Simon Working on issue 10
+    * Last Week:
+        * Kristiana + Christoph -> Rating
+        * Sophie + Carina -> Testing mode
+* How to handle CSV Export and Import
+
+### Commitment
+
+Keep coding Issues
+
+
+# Daily Standup : Sprint 3
+## ASD Morning 4 - Meeting #8
+
+* Date: 20.05.2020
+* Time: 08:00 - 08:30
+* Type of meeting: Daily Standup
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpos
+
+* How far are the Issues implemented?
+* Discussion about further ToDos
+* Help needed?
+* Fixing Bugs
+
+
+### Meeting Protocol
+
+* Still working on issues
+* Implement some usability.
+* Need to split Testing mode.
+* Backup is split up in two separate issues -> CSV Export and Import
+
+### Commitment
+
+Keep coding Issues
+
+# Review Meeting : Sprint 3
+## ASD Morning 4 - Meeting #9
+
+* Date: 20.05.2020
+* Time: 11:30 - 12:00
+* Type of meeting: Daily Standup
+* Attendees: Felgitsch, Hiess, Loitzenbauer, Prüll, Wartinger, Weinhandl
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpose
+* Help wanted?
+* How far are the Issues implemented?
+* Are there critical bugs?
+* Ideas for better interaction.
+
+### Meeting Protocol
+* Closed issues in sprint 3: Rating, Export vocabulary, Change interface language A, Interface-navbar, Testing mode A. 
+* Testing mode split into two issues
+* UI implementation needs some updates.
+* Edit vocabulary deletes Tag -> needs a fix
+* More documentation in the code needed !!!!!
+* Do not refactor code lightly.
+
+### Commitment
+* Closed all Issues that we worked on in Sprint 3
+
+
+# Planing Meeting : Sprint 4
+## ASD Morning 4 - Meeting #10
+
+* Date: 27.05.2020
+* Time: 08:00 - 08:40
+* Type of meeting: Planning Meeting
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpose
+* How far are the Issues implemented?
+* Discussion which features are almost finished
+* Speak about problems, errors or obstacles
+* Prioritize issues that must be implemented
+
+### Meeting Protocol
+* Most issues are finished
+* We have set the "testing mode_b" to “size 40”.
+* We have assigned a lower priority of "size 0" to the share function (LANG_011 Share). 
+* Due to a lack of time and technical difficulties, this feature cannot be implemented as of now. The basics are already done though.
+* The focus of the fourth sprint is also on finalizing the unit tests.
+
+
+### Commitment
+Closed all Issues that we worked on in Sprint 4.
+
+# Morning Meeting : Sprint 4 
+## ASD Morning 4 - Meeting #11
+
+* Date: 03.06.2020
+* Time: 08:00 - 08:30
+* Type of meeting: Daily Standup
+* Attendees: All
+* Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpose
+* Organizational matters (presentations)
+* Prioritization of the remaining user stories
+* Writing a final release document
+* Concluding meetings
+* Discussion which features can be finished for the last release
+* Speak about problems, errors or obstacles
+* Prioritize issues that can be done today
+* What about Testing?
+
+
+### Meeting Protocol
+
+* We agreed on a timeslot for the presentations.
+* In our last meeting we discussed together in the team which last features could still be implemented.
+* We have therefore prioritized the product backlog again due to time constraints. A missing feature (the boundary tests) could be inserted for basic methods.
+* It is also necessary to continue working on the testing mode.
+* Finally, further unit tests can be implemented for the CSV writer.
+* Testing Mode still needs rework. Probably won’t be done at the end of the sprint
+* Testing Mode would get database implementation.
+* Language change will be finished for this Sprint
+* Adding some tests today.
+
+### Commitment
+
+Implement the most important features to complete the project.
+
+
+# Review Meeting : Sprint 4 
+## ASD Morning 4 - Meeting #12
+
+* Date: 03.06.2020
+* Time: 11:00 - 12:00
+* Type of meeting: Sprint review Meeting
+* Attendees: All
+*Tools used to conduct the meeting: Slack and Teamspeak
+
+### Purpose
+
+* What is finally implemented?
+* What did not work as planned?
+* How can we improve?
+* Can we communicate better?
+
+
+### Meeting Protocol
+
+* Most important features are implemented.
+* Sadly Testing Mode is still in a beta Phase. Not enough time on our hands.
+* Couldn’t finish all Issues
+* Learning more “theory” outside of Coding-Blocks
+* Communication felt good. Usually everyone was in picture of the process.  
+
+### Commitment
+Finishing Files for Sprint 4
