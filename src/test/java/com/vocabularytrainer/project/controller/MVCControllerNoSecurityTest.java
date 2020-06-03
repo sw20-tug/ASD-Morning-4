@@ -18,6 +18,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/** test: testGetUserAddVocabulary */
+
 @SpringBootTest
 public class MVCControllerNoSecurityTest {
 
@@ -30,6 +32,7 @@ public class MVCControllerNoSecurityTest {
 
     @Mock
     private Model model;
+
 
 
     // Ein globaler Test-String

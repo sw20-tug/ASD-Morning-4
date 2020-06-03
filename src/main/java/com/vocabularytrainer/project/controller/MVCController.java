@@ -4,6 +4,8 @@ import com.vocabularytrainer.project.CSVParser.CSVWriter;
 import com.vocabularytrainer.project.db.VocabularyEntries;
 import com.vocabularytrainer.project.db.VocabularyRepository; // Repository Interface
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -34,13 +36,35 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * Presentation Layer with functionality as RESTful web services
+ *
+ * We don't have a "standalone" service layer -> do directly in Repository using CRUD
+ *
+ * As soon as you need to deal with access rights, it's no longer a matter of routing requests
+ * from the controller directly to the repository, but checking access and filtering data as well.
+ * Requests may need validation and consistency checks before hitting the database, rules and
+ *
+ * When to use @Service Layers?
+ * If you have an API which performs some logic before querying your repository then this should be in a separate service class.
+ * Because as the "Single responsibility principle" states, the controller's single responsibility should only handle requests.
+ * The Service layer's single responsibility is to do any logic required with the data received by the Controller.
+ * Example of implementing @Service class: https://howtodoinjava.com/spring-boot2/spring-boot-crud-hibernate/
+ * Service classes are used to write business logic.
+ *
+ * We are building behind REST (representational state transfer) -> Programming paradigm for distributed systems
+ * A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data.
+ *
+* */
 
-@Controller
+@Controller //@Controller also makes it automatically a bean
 public class MVCController {
 
     /* Setup access Database Repository Interface */
+    // constructor based dependency injection -> from import com.vocabularytrainer.project.db.VocabularyRepository
     VocabularyRepository vocabularyRepository;
     public MVCController(VocabularyRepository vocabularyRepository) {
+        //          client                service
         this.vocabularyRepository = vocabularyRepository;
     }
 
