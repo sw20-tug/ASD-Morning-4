@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Import Vocabularies</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Script Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Some Custom Style -->
+    <style>
+        body { text-align: center; margin-top: 50px;}
+
+        .table th{
+            background-color: lightsalmon;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:remove="tag">
+    <!-- Navbar -->
+    <div class="container" style="width: 80%; height: 120%">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top " style="background-color: lightsalmon;">
+            <ul class="navbar-nav ml-auto mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user"><span th:text="#{home}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/studyInterface"><span th:text="#{studyinterface}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/addvoc"><span th:text="#{add}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/editvoc"><span th:text="#{edit_voc}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/export_vocabularies"><span th:text="#{downloadvocab}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/import"><span th:text="#{importvocab}"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><span th:text="#{logout}"></span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <h2 th:text="#{importvocab}"></h2>
+
+    <div>
+        <div class="alert alert-info">
+            <span th:text="#{irreversible}"></span>
+
+        </div>
+    </div>
+
+    <!-- TODO: Upload Form -->
+
+
+</div>
+
+</body>
+</html>
