@@ -1,6 +1,5 @@
 package com.vocabularytrainer.project.controller;
 
-
 import com.vocabularytrainer.project.db.VocabularyEntries;
 import com.vocabularytrainer.project.db.VocabularyRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -24,22 +23,32 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test 1: If the output of the database is nothing (when it was deleted previously)
+ * Test 2: If the "overview" function works as intended and if function "showing the logged in user" works
+ * Test 3: If submitted added new vocabulary was added to the database
+ * Test 4: If edit Tag function is working
+ * Test 5: testSubmitEditedVocabularyEntry
+ * Test 6: testUserStudyInterfaceEnglish
+ * Test 7: testUserStudyInterfaceGerman
+ * Test 8: testDeleteVocabularyEntry
+ * */
+
 @SpringBootTest
 public class MVCControllerTest {
-
 
     @Autowired
     private MVCController controller;
 
     @MockBean
-    private VocabularyRepository vocabularyRepository;
+    private VocabularyRepository vocabularyRepository; // MVCController is dependent on VocabularyRepository -> MockBean VocabularyRepository
 
     @Mock
-    private Model model;
+    private Model model; // Mock model -> Thymeleaf dependency -> "model manipulation" in templates variables
 
     // security mocks start
     @Mock
-    private SecurityContext securityContext;
+    private SecurityContext securityContext; // also Mock -> Dependency from SpringSecurity
     @Mock
     private Authentication authentication;
     @Mock
@@ -54,8 +63,8 @@ public class MVCControllerTest {
     @BeforeEach
     public void beforeEach() {
         // Initialisiere Mocks
-        MockitoAnnotations.initMocks(this);
-
+        MockitoAnnotations.initMocks(this); // SpringBootTest --> this class
+                                                     // Import Package
 
         // Hier legen wir ein Return-Verhalten für unterschiedliche Methoden fest.
         // z. B. Wenn "getAuthentiication()" aufgerufen wird, gibt die
@@ -71,10 +80,6 @@ public class MVCControllerTest {
         // Alle Datenbankeinträge werden gelöscht, um zu testen, wie das Programm darauf reagiert.
         this.vocabularyRepository.deleteAll();
     }
-
-    /**
-     * Verify security context calls
-     */
 
     // @AfterEach ist eine Annotation, die angibt, was nach jedem Test getestet werden soll.
     @AfterEach
@@ -229,6 +234,8 @@ public class MVCControllerTest {
         verify(this.vocabularyRepository, times(1)).delete(ve);
         verify(this.model, times(1)).addAttribute("overview", veList);
     }
+
+
 
     /*
     @Test
