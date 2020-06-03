@@ -1,6 +1,5 @@
 id;user;german_word;engl_trans;rating;tag
-1;user;Käse;cheese;0;Noun
-2;user;gelb;yellow;0;
-3;user;Huhn;chicken;0;
-6;user;Speck;ham;0;
-7;user;Fahrrad;bicycle;0;
+2;user;essen;eat;0;sda
+3;user;schön;beautiful;0;adjective
+4;user;Kraftwerk;"power plant";4;noun
+5;user;sjdalsdj;asdasd;0;
