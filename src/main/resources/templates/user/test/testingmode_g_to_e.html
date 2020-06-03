@@ -22,7 +22,7 @@
 
     <div th:remove="tag">
 
-        <h5>Testing mode - English</h5>
+        <h5 th:text="#{testingenglish}"></h5>
 
         <div class="container">
             <!--<h2>hier arbeite ich </h2>-->
@@ -35,11 +35,9 @@
             <form  action="/user/e_result" method="get">
                 <table class="table table-striped">
                     <tr>
-                        <th>
-                            English words:
+                        <th th:text="#{germanword}">
                         </th>
-                        <th>
-                            Please enter German translation here:
+                        <th th:text="#{englishtranslation}">
                         </th>
                     </tr>
                     <th:block th:each="entry : ${overview}">

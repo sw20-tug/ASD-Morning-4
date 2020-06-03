@@ -29,7 +29,7 @@
 <body>
     <div th:remove="tag">
 
-        <h3>Result German:</h3>
+        <h3 th:text="#{resultg}"></h3>
         <!--<div id="container" style="width: 100%; height: 100%; size: 200%; color: darkgray "></div>
         <script>
             anychart.onDocumentReady(function() {
@@ -55,12 +55,12 @@
             });
         </script>-->
 
-        <h3>Overview of tested vocabulary:</h3>
+        <h3 th:text="#{overviewtest}"></h3>
         <div class="container">
             <table class="table table-striped">
                 <tr>
-                    <th>English Vocabulary</th>
-                    <th>German Translation</th>
+                    <th th:text="#{englishword}"></th>
+                    <th th:text="#{germantrans}"></th>
                 </tr>
 
                 <!-- Iterate through all entries using th:each -->
@@ -73,11 +73,11 @@
             </table>
         </div>
         <form action="/user/repetition">
-            <input type="submit" value="Repeat wrong Vocabulary">
+            <input type="submit" th:text="#{repeat}">
         </form>
 
-        <a href="/user/test">Testing Mode</a></br>
-        <a href="/user">Back to overview</a>
+        <a href="/user/test"><span th:text="#{testingmode}"></span></a></br>
+        <a href="/user"><span th:text="#{backoverview}"></span></a>
 
 
     </div>
