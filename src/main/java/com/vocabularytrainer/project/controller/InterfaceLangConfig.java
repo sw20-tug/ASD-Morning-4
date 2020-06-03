@@ -12,7 +12,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class Beans implements WebMvcConfigurer{
+public class InterfaceLangConfig implements WebMvcConfigurer{
+
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
@@ -23,7 +24,7 @@ public class Beans implements WebMvcConfigurer{
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang");
+        lci.setParamName("lang"); // change interface language
         return lci;
     }
 
